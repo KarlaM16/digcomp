@@ -10,11 +10,11 @@
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="./images/favicon.png">
     <!-- Page Title  -->
-    <title>Competencias Digitales</title>
+    <title>Competencias</title>
     <!-- StyleSheets  -->
-    <!-- Agregar estilos a la pagina mediante base url que encuentra la ubicacion del archivo  -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/dashlite.css?ver=2.4.0');?>"> 
-    <link id="skin-default" rel="stylesheet" href="<?php echo base_url('assets/css/theme.css?ver=2.4.0');?>">
+    <!-- Agregar estilos a l pagina mediante base url que encuentra la ubicacion del archivo  -->
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/dashlite.css?ver=2.4.0'); ?>">
+    <link id="skin-default" rel="stylesheet" href="<?php echo base_url('assets/css/theme.css?ver=2.4.0'); ?>">
 </head>
 
 <body class="nk-body bg-white npc-general pg-auth">
@@ -28,103 +28,69 @@
                     <div class="nk-block nk-block-middle nk-auth-body  wide-xs">
                         <div class="brand-logo pb-4 text-center">
                             <a href="html/index.html" class="logo-link">
-                                <img class="logo-light logo-img logo-img-lg" src="./images/logo.png" srcset="./images/logo2x.png 2x" alt="logo">
-                                <img class="logo-dark logo-img logo-img-lg" src="./images/logo-dark.png" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
+                                <img class="logo-light logo-img logo-img-lg" src="<?php echo base_url('assets/logo-utpl.png'); ?>" srcset="./images/logo-utpl.png 4x" alt="logo-utpl.png">
+                                <img class="logo-dark logo-img logo-img-lg" src="<?php echo base_url('assets/images/logo-utpl.png'); ?>" srcset="./images/logo-utpl.png 4x" alt="logo-utpl.png">
                             </a>
                         </div>
                         <div class="card card-bordered">
                             <div class="card-inner card-inner-lg">
+                                <?php if ($this->session->flashdata('error')!=null) : ?>
+                                    <div class="alert alert-fill alert-danger alert-dismissible alert-icon">
+                                        <em class="icon ni ni-cross-circle"></em> <strong>Importante: </strong><?php echo $this->session->flashdata('error');?> <button class="close" data-dismiss="alert"></button>
+                                    </div>
+                                <?php endif; ?>
                                 <div class="nk-block-head">
                                     <div class="nk-block-head-content">
-                                        <h4 class="nk-block-title">Iniciar sesión</h4>
+                                        <h4 class="nk-block-title">INGRESO</h4>
                                         <div class="nk-block-des">
-                                            <p>Acceda con su correo electrónico y contraseña</p>
+                                            <p>DASHBOARD COMPETENCIAS DIGITALES</p>
                                         </div>
                                     </div>
                                 </div>
-                                <form action="<?php echo base_url('home/auth');?>" method="post"> <!--Buscar direcciones, action busca el archivo y method es la forma como va a trabajar el archivo -->
+                                <!-- Estudiar como funcionan los formularios y los distintots metodos -->
+                                <form action="<?php echo base_url('home/auth'); ?>" method="post">
                                     <div class="form-group">
                                         <div class="form-label-group">
-                                            <label class="form-label" for="default-01">Correo electrónico o usuario</label>
+                                            <label class="form-label" for="default-01">Email o Usuario</label>
                                         </div>
-                                        <input type="text" name="email" class="form-control form-control-lg" id="default-01" placeholder="Ingrese su correo o usuario">
+                                        <input type="text" name="email" class="form-control form-control-lg" id="default-01" placeholder="usuario@correo.com">
                                     </div>
                                     <div class="form-group">
                                         <div class="form-label-group">
                                             <label class="form-label" for="password">Contraseña</label>
-                                            <a class="link link-primary link-sm" href="html/pages/auths/auth-reset-v2.html">Olvido su contraseña?</a>
+                                            <a class="link link-primary link-sm" href="html/pages/auths/auth-reset-v2.html">OLvido su contraseña?</a>
                                         </div>
                                         <div class="form-control-wrap">
                                             <a href="#" class="form-icon form-icon-right passcode-switch" data-target="password">
                                                 <em class="passcode-icon icon-show icon ni ni-eye"></em>
                                                 <em class="passcode-icon icon-hide icon ni ni-eye-off"></em>
                                             </a>
-                                            <input type="password" name="password" class="form-control form-control-lg" id="password" placeholder="Ingrese su contraseña">
+                                            <input type="password" name="password" class="form-control form-control-lg" id="password" placeholder="Ingrese su clave">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-lg btn-primary btn-block">Iniciar sesión</button>
+                                        <button type="submit" class="btn btn-lg btn-primary btn-block">Iniciar Sesión</button>
                                     </div>
                                 </form>
-                                <!--<div class="form-note-s2 text-center pt-4"> No tienes una cuenta? <a href="html/pages/auths/auth-register-v2.html">Crear una cuenta</a>
+                                <div class="form-note-s2 text-center pt-4"> Nuevo Usuario? <a href="html/pages/auths/auth-register-v2.html">Crear una cuenta</a>
                                 </div>
-                             
+
                             </div>
                         </div>
                     </div>
                     <div class="nk-footer nk-auth-footer-full">
-                        <footer 
                         <div class="container wide-lg">
                             <div class="row g-3">
                                 <div class="col-lg-6 order-lg-last">
                                     <ul class="nav nav-sm justify-content-center justify-content-lg-end">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#">Terms & Condition</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Privacy Policy</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Help</a>
-                                        </li>
-                                        <li class="nav-item dropup">
-                                            <a class="dropdown-toggle dropdown-indicator has-indicator nav-link" data-toggle="dropdown" data-offset="0,10"><span>English</span></a>
-                                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                                                <ul class="language-list">
-                                                    <li>
-                                                        <a href="#" class="language-item">
-                                                            <img src="./images/flags/english.png" alt="" class="language-flag">
-                                                            <span class="language-name">English</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" class="language-item">
-                                                            <img src="./images/flags/spanish.png" alt="" class="language-flag">
-                                                            <span class="language-name">Español</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" class="language-item">
-                                                            <img src="./images/flags/french.png" alt="" class="language-flag">
-                                                            <span class="language-name">Français</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" class="language-item">
-                                                            <img src="./images/flags/turkey.png" alt="" class="language-flag">
-                                                            <span class="language-name">Türkçe</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                            <a class="nav-link" href="#">Términos y condiciones</a>
                                         </li>
                                     </ul>
                                 </div>
-                              
-                                -->
                                 <div class="col-lg-6">
                                     <div class="nk-block-content text-center text-lg-left">
-                                        <p class="text-soft">&copy; <?php echo date('Y');?> competencias Digitales DIGCOMP. Derechos Reservados.</p> 
+                                        <p class="text-soft">&copy; <?php echo date('Y'); ?> Competencias. Derechos Reservados.</p>
                                     </div>
                                 </div>
                             </div>
@@ -139,7 +105,7 @@
     </div>
     <!-- app-root @e -->
     <!-- JavaScript -->
-    <script src="<?php echo base_url('assets/js/bundle.js?ver=2.4.0');?>"></script>
-    <script src="<?php echo base_url('assets/js/scripts.js?ver=2.4.0');?>"></script>
+    <script src="<?php echo base_url('assets/js/bundle.js?ver=2.4.0'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/scripts.js?ver=2.4.0'); ?>"></script>
 
 </html>
