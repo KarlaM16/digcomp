@@ -26,10 +26,9 @@
                 <!-- content @s -->
                 <div class="nk-content ">
                     <div class="nk-block nk-block-middle nk-auth-body  wide-xs">
-                        <div class="brand-logo pb-4 text-center">
+                        <div class="brand-logo pb-3 text-center">
                             <a href="html/index.html" class="logo-link">
-                                <img class="logo-light logo-img logo-img-lg" src="<?php echo base_url('assets/logo-utpl.png'); ?>" srcset="./images/logo-utpl.png 4x" alt="logo-utpl.png">
-                                <img class="logo-dark logo-img logo-img-lg" src="<?php echo base_url('assets/images/logo-utpl.png'); ?>" srcset="./images/logo-utpl.png 4x" alt="logo-utpl.png">
+                                <img class="logo-utpl" src="<?php echo base_url('assets/images/logo-utpl.png'); ?>">
                             </a>
                         </div>
                         <div class="card card-bordered">
@@ -41,9 +40,9 @@
                                 <?php endif; ?>
                                 <div class="nk-block-head">
                                     <div class="nk-block-head-content">
-                                        <h4 class="nk-block-title">INGRESO</h4>
+                                        <h4 class="nk-block-title text-center">INGRESO</h4>
                                         <div class="nk-block-des">
-                                            <p>DASHBOARD COMPETENCIAS DIGITALES</p>
+                                            <p><em>DIGCOMP, COMPETENCIAS DIGITALES.</em></p>
                                         </div>
                                     </div>
                                 </div>

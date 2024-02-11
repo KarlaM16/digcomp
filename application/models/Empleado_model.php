@@ -72,12 +72,14 @@ class Empleado_model extends CI_Model
         return $interesado->cantidad;
     }
 
-    public function getcompetencia1(){
-        $this->db->select('pregunta_11,pregunta_12,pregunta_13,pregunta_14,
-        pregunta_15,validacion_11,validacion_12,');
+    public function getquestion($data){
+        $this->db->select($data);
         return $this->db->get('competencias')->result();
     }
 
+    
+   
+    
                         
 }
 

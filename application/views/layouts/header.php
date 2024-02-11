@@ -12,8 +12,8 @@
     <!-- Page Title  -->
     <title>Competencias Digitales. Área 5</title>
     <!-- StyleSheets  -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/dashlite.css?ver=2.4.0');?>">
-    <link id="skin-default" rel="stylesheet" href="<?php echo base_url('assets/css/theme.css?ver=2.4.0');?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/dashlite.css?ver=2.4.0'); ?>">
+    <link id="skin-default" rel="stylesheet" href="<?php echo base_url('assets/css/theme.css?ver=2.4.0'); ?>">
 </head>
 
 <body class="nk-body bg-lighter npc-general has-sidebar ">
@@ -28,7 +28,9 @@
                         <a href="#" class="nk-nav-compact nk-quick-nav-icon d-none d-xl-inline-flex" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
                     </div>
                     <div class="nk-sidebar-brand">
-                          <p>RESOLUCIÓN DE PROBLEMAS</p>
+                        <p>
+                            <font size=2 color="blue">RESOLUCIÓN DE PROBLEMAS</font>
+                        </p>
                         </a>
                     </div>
                 </div><!-- .nk-sidebar-element -->
@@ -36,35 +38,53 @@
                     <div class="nk-sidebar-content">
                         <div class="nk-sidebar-menu" data-simplebar>
                             <ul class="nk-menu">
+
+                                <li class="nk-menu-heading">
+                                    <h6 class="overline-title text-primary-alt">Información General</h6>
+                                </li><!-- .nk-menu-heading -->
+
                                 <li class="nk-menu-item">
-                                    <a href="<?php echo site_url('dashboard/index');?>" class="nk-menu-link">
+                                    <a href="<?php echo site_url('empleados/index'); ?>" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
+                                        <span class="nk-menu-text">Instituciones</span>
+                                    </a>
+
+                                    <a href="<?php echo site_url('empleados/index'); ?>" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
+                                        <span class="nk-menu-text">Competencias Digitales</span>
+                                    </a>
+
+                                    <a href="<?php echo site_url('empleados/index'); ?>" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
+                                        <span class="nk-menu-text">Área 5</span>
+                                    </a>
+                                </li>
+
+                                <li class="nk-menu-heading">
+                                    <h6 class="overline-title text-primary-alt">General</h6>
+                                </li><!-- .nk-menu-heading -->
+
+                                <li class="nk-menu-item">
+                                    <a href="<?php echo site_url('dashboard/index'); ?>" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-dashlite"></em></span>
                                         <span class="nk-menu-text">Principal</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
 
-
-                                <li class="nk-menu-heading">
-                                    <h6 class="overline-title text-primary-alt">General</h6>
-                                </li><!-- .nk-menu-heading -->
                                 <li class="nk-menu-item">
-                                    <a href="<?php echo site_url('empleados/index');?>" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
-                                        <span class="nk-menu-text">Área 5</span>
-                                    </a>
-                                    <a href="<?php echo site_url('empleados/index');?>" class="nk-menu-link">
+
+                                    <a href="<?php echo site_url('empleados/index'); ?>" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
                                         <span class="nk-menu-text">Empleados</span>
                                     </a>
-                                </li><!-- .nk-menu-item -->                               
+                                </li><!-- .nk-menu-item -->
 
                                 <li class="nk-menu-heading">
                                     <h6 class="overline-title text-primary-alt">Administrador</h6>
                                 </li><!-- .nk-menu-heading -->
-                               
-                               
+
                                 <li class="nk-menu-item">
-                                    <a href="<?php echo site_url('usuarios/index');?>" class="nk-menu-link">
+                                    <a href="<?php echo site_url('usuarios/index'); ?>" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
                                         <span class="nk-menu-text">Usuarios</span>
                                     </a>
@@ -85,10 +105,10 @@
                                 <a href="#" class="nk-nav-toggle nk-quick-nav-icon" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
                             </div>
                             <div class="nk-header-brand d-xl-none">
-                                <a href="html/index.html" class="logo-link">
-                                    <img class="logo-light logo-img" src="./images/logo.png" srcset="./images/logo2x.png 2x" alt="logo">
-                                    <img class="logo-dark logo-img" src="./images/logo-dark.png" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
-                                </a>
+                              
+                                <img class="logo-light logo-img logo-img-lg" src="<?php echo base_url('assets/logo-utpl.png'); ?>" srcset="./images/logo-utpl.png 4x" alt="logo-utpl.png">
+                                <img class="logo-dark logo-img logo-img-lg" src="<?php echo base_url('assets/images/logo-utpl.png'); ?>" srcset="./images/logo-utpl.png 4x" alt="logo-utpl.png">
+                                
                             </div><!-- .nk-header-brand -->
                             <div class="nk-header-news d-none d-xl-block">
 
@@ -102,8 +122,8 @@
                                                     <em class="icon ni ni-user-alt"></em>
                                                 </div>
                                                 <div class="user-info d-none d-md-block">
-                                                    <div class="user-status"><?php echo $this->session->userdata('role');?></div>
-                                                    <div class="user-name dropdown-indicator"><?php echo $this->session->userdata('name');?></div>
+                                                    <div class="user-status"><?php echo $this->session->userdata('role'); ?></div>
+                                                    <div class="user-name dropdown-indicator"><?php echo $this->session->userdata('name'); ?></div>
                                                 </div>
                                             </div>
                                         </a>
@@ -114,20 +134,20 @@
                                                         <span>AB</span>
                                                     </div>
                                                     <div class="user-info">
-                                                        <span class="lead-text"><?php echo $this->session->userdata('name');?></span>
-                                                        <span class="sub-text"><?php echo $this->session->userdata('email');?></span>
+                                                        <span class="lead-text"><?php echo $this->session->userdata('name'); ?></span>
+                                                        <span class="sub-text"><?php echo $this->session->userdata('email'); ?></span>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="dropdown-inner">
                                                 <ul class="link-list">
-                                                                                                                                                      
+
                                                     <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Modo Nocturno</span></a></li>
                                                 </ul>
                                             </div>
                                             <div class="dropdown-inner">
                                                 <ul class="link-list">
-                                                    <li><a href="<?php echo base_url('home/logout');?>"><em class="icon ni ni-signout"></em><span>Cerrar Sesión</span></a></li>
+                                                    <li><a href="<?php echo base_url('home/logout'); ?>"><em class="icon ni ni-signout"></em><span>Cerrar Sesión</span></a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -157,4 +177,3 @@
                     <div class="container-fluid">
                         <div class="nk-content-inner">
                             <div class="nk-content-body">
-                                

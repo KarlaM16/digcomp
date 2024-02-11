@@ -42,10 +42,10 @@ $('#edit-user').on('show.bs.modal', function (event) {
 
   "use strict";
   !function (NioApp, $) {
-    var promedio_1=0;
-    var promedio_2=0;
-    var promedio_3=0;
-    var promedio_4=0;
+    var competencia_1=0;
+    var competencia_2=0;
+    var competencia_3=0;
+    var competencia_4=0;
    
    var base=$('#base').val();
 
@@ -56,23 +56,24 @@ $('#edit-user').on('show.bs.modal', function (event) {
       'global': false,
       'dataType': "json",
       'success': function(request) {
-        console.log(request);
-        promedio_1 = request['promedio_1'];
-        promedio_2 = request['promedio_2'];
-        promedio_3 = request['promedio_3'];
-        promedio_4 = request['promedio_4'];
+        
+        competencia_1 = (request['competencia_1']*.25).toFixed(2);
+        competencia_2 = (request['competencia_2']*.25).toFixed(2);
+        competencia_3 = (request['competencia_3']*.25).toFixed(2);
+        competencia_4 = (request['competencia_4']*.25).toFixed(2);
       }
     });
-   console.log(promedio_1);
+   
    
     var TrafficChannelDoughnutDatac1 = {
-      labels: ["No se como hacerlo", "Puedo hacerlo con ayuda", "Puedo hacerlo por mi cuenta", "Puedo Hacerlo y ayudo a otros."],
-      dataUnit: 'Empleados',
+      labels: ["Problemas Técnicos.", "Identificación de Necesidades y Respuestas Tecnólogicas.", 
+      "Uso Creativo de Tecnología Digital.", "Lagunas en Competencias Digitales."],
+      dataUnit: 'Empleados Capacitados',
       legend: false,
       datasets: [{
         borderColor: "#fff",
         background: ["#798bff", "#b8acff", "#ffa9ce", "#f9db7b"],
-        data: [promedio_1, promedio_2, promedio_3,promedio_4],
+        data: [competencia_1, competencia_2, competencia_3,competencia_4],
       }]
     };
   
@@ -143,9 +144,328 @@ $('#edit-user').on('show.bs.modal', function (event) {
         });
       });
     } // init chart
+    
+    var TrafficChannelDoughnutDatacomp1 = {
+      labels: ["Capacitados", "Por capacitar",],
+      dataUnit: 'Empleados',
+      legend: false,
+      datasets: [{
+        borderColor: "#fff",
+        background: ["#84DB7B", "#D86B52"],
+        data: [(competencia_1/.25).toFixed(), (100-competencia_1/.25).toFixed(), ],
+      }]
+    };
+
+    function analyticsDoughnutcomp1(selector, set_data) {
+      var $selector = selector ? $(selector) : $('.analytics-doughnutcomp1');
+      $selector.each(function () {
+        var $self = $(this),
+            _self_id = $self.attr('id'),
+            _get_data = typeof set_data === 'undefined' ? eval(_self_id) : set_data;
   
+        var selectCanvas = document.getElementById(_self_id).getContext("2d");
+        var chart_data = [];
   
+        for (var i = 0; i < _get_data.datasets.length; i++) {
+          chart_data.push({
+            backgroundColor: _get_data.datasets[i].background,
+            borderWidth: 2,
+            borderColor: _get_data.datasets[i].borderColor,
+            hoverBorderColor: _get_data.datasets[i].borderColor,
+            data: _get_data.datasets[i].data
+          });
+        }
+  
+        var chart = new Chart(selectCanvas, {
+          type: 'doughnut',
+          data: {
+            labels: _get_data.labels,
+            datasets: chart_data
+          },
+          options: {
+            legend: {
+              display: _get_data.legend ? _get_data.legend : false,
+              labels: {
+                boxWidth: 12,
+                padding: 20,
+                fontColor: '#6783b8'
+              }
+            },
+            rotation: -1.5,
+            cutoutPercentage: 70,
+            maintainAspectRatio: false,
+            tooltips: {
+              enabled: true,
+              rtl: NioApp.State.isRTL,
+              callbacks: {
+                title: function title(tooltipItem, data) {
+                  return data['labels'][tooltipItem[0]['index']];
+                },
+                label: function label(tooltipItem, data) {
+                  return data.datasets[tooltipItem.datasetIndex]['data'][tooltipItem['index']] + ' ' + _get_data.dataUnit;
+                }
+              },
+              backgroundColor: '#fff',
+              borderColor: '#eff6ff',
+              borderWidth: 2,
+              titleFontSize: 13,
+              titleFontColor: '#6783b8',
+              titleMarginBottom: 6,
+              bodyFontColor: '#9eaecf',
+              bodyFontSize: 12,
+              bodySpacing: 4,
+              yPadding: 10,
+              xPadding: 10,
+              footerMarginTop: 0,
+              displayColors: false
+            }
+          }
+        });
+      });
+    }
+
+    var TrafficChannelDoughnutDatacomp2 = {
+      labels: ["Capacitados", "Por capacitar",],
+      dataUnit: 'Empleados',
+      legend: false,
+      datasets: [{
+        borderColor: "#fff",
+        background: ["#84DB7B", "#D86B52"],
+        data: [(competencia_2/.25).toFixed(), (100-competencia_2/.25).toFixed(), ],
+      }]
+    };
+
+    function analyticsDoughnutcomp2(selector, set_data) {
+      var $selector = selector ? $(selector) : $('.analytics-doughnutcomp2');
+      $selector.each(function () {
+        var $self = $(this),
+            _self_id = $self.attr('id'),
+            _get_data = typeof set_data === 'undefined' ? eval(_self_id) : set_data;
+  
+        var selectCanvas = document.getElementById(_self_id).getContext("2d");
+        var chart_data = [];
+  
+        for (var i = 0; i < _get_data.datasets.length; i++) {
+          chart_data.push({
+            backgroundColor: _get_data.datasets[i].background,
+            borderWidth: 2,
+            borderColor: _get_data.datasets[i].borderColor,
+            hoverBorderColor: _get_data.datasets[i].borderColor,
+            data: _get_data.datasets[i].data
+          });
+        }
+  
+        var chart = new Chart(selectCanvas, {
+          type: 'doughnut',
+          data: {
+            labels: _get_data.labels,
+            datasets: chart_data
+          },
+          options: {
+            legend: {
+              display: _get_data.legend ? _get_data.legend : false,
+              labels: {
+                boxWidth: 12,
+                padding: 20,
+                fontColor: '#6783b8'
+              }
+            },
+            rotation: -1.5,
+            cutoutPercentage: 70,
+            maintainAspectRatio: false,
+            tooltips: {
+              enabled: true,
+              rtl: NioApp.State.isRTL,
+              callbacks: {
+                title: function title(tooltipItem, data) {
+                  return data['labels'][tooltipItem[0]['index']];
+                },
+                label: function label(tooltipItem, data) {
+                  return data.datasets[tooltipItem.datasetIndex]['data'][tooltipItem['index']] + ' ' + _get_data.dataUnit;
+                }
+              },
+              backgroundColor: '#fff',
+              borderColor: '#eff6ff',
+              borderWidth: 2,
+              titleFontSize: 13,
+              titleFontColor: '#6783b8',
+              titleMarginBottom: 6,
+              bodyFontColor: '#9eaecf',
+              bodyFontSize: 12,
+              bodySpacing: 4,
+              yPadding: 10,
+              xPadding: 10,
+              footerMarginTop: 0,
+              displayColors: false
+            }
+          }
+        });
+      });
+    }
+
+    var TrafficChannelDoughnutDatacomp3 = {
+      labels: ["Capacitados", "Por capacitar",],
+      dataUnit: 'Empleados',
+      legend: false,
+      datasets: [{
+        borderColor: "#fff",
+        background: ["#84DB7B", "#D86B52"],
+        data: [(competencia_3/.25).toFixed(), (100-competencia_3/.25).toFixed(), ],
+      }]
+    };
+
+    function analyticsDoughnutcomp3(selector, set_data) {
+      var $selector = selector ? $(selector) : $('.analytics-doughnutcomp3');
+      $selector.each(function () {
+        var $self = $(this),
+            _self_id = $self.attr('id'),
+            _get_data = typeof set_data === 'undefined' ? eval(_self_id) : set_data;
+  
+        var selectCanvas = document.getElementById(_self_id).getContext("2d");
+        var chart_data = [];
+  
+        for (var i = 0; i < _get_data.datasets.length; i++) {
+          chart_data.push({
+            backgroundColor: _get_data.datasets[i].background,
+            borderWidth: 2,
+            borderColor: _get_data.datasets[i].borderColor,
+            hoverBorderColor: _get_data.datasets[i].borderColor,
+            data: _get_data.datasets[i].data
+          });
+        }
+  
+        var chart = new Chart(selectCanvas, {
+          type: 'doughnut',
+          data: {
+            labels: _get_data.labels,
+            datasets: chart_data
+          },
+          options: {
+            legend: {
+              display: _get_data.legend ? _get_data.legend : false,
+              labels: {
+                boxWidth: 12,
+                padding: 20,
+                fontColor: '#6783b8'
+              }
+            },
+            rotation: -1.5,
+            cutoutPercentage: 70,
+            maintainAspectRatio: false,
+            tooltips: {
+              enabled: true,
+              rtl: NioApp.State.isRTL,
+              callbacks: {
+                title: function title(tooltipItem, data) {
+                  return data['labels'][tooltipItem[0]['index']];
+                },
+                label: function label(tooltipItem, data) {
+                  return data.datasets[tooltipItem.datasetIndex]['data'][tooltipItem['index']] + ' ' + _get_data.dataUnit;
+                }
+              },
+              backgroundColor: '#fff',
+              borderColor: '#eff6ff',
+              borderWidth: 2,
+              titleFontSize: 13,
+              titleFontColor: '#6783b8',
+              titleMarginBottom: 6,
+              bodyFontColor: '#9eaecf',
+              bodyFontSize: 12,
+              bodySpacing: 4,
+              yPadding: 10,
+              xPadding: 10,
+              footerMarginTop: 0,
+              displayColors: false
+            }
+          }
+        });
+      });
+    }
+
+    var TrafficChannelDoughnutDatacomp4 = {
+      labels: ["Capacitados", "Por capacitar",],
+      dataUnit: 'Empleados',
+      legend: false,
+      datasets: [{
+        borderColor: "#fff",
+        background: ["#84DB7B", "#D86B52"],
+        data: [(competencia_4/.25).toFixed(), (100-competencia_4/.25).toFixed(), ],
+      }]
+    };
+
+    function analyticsDoughnutcomp4(selector, set_data) {
+      var $selector = selector ? $(selector) : $('.analytics-doughnutcomp4');
+      $selector.each(function () {
+        var $self = $(this),
+            _self_id = $self.attr('id'),
+            _get_data = typeof set_data === 'undefined' ? eval(_self_id) : set_data;
+  
+        var selectCanvas = document.getElementById(_self_id).getContext("2d");
+        var chart_data = [];
+  
+        for (var i = 0; i < _get_data.datasets.length; i++) {
+          chart_data.push({
+            backgroundColor: _get_data.datasets[i].background,
+            borderWidth: 2,
+            borderColor: _get_data.datasets[i].borderColor,
+            hoverBorderColor: _get_data.datasets[i].borderColor,
+            data: _get_data.datasets[i].data
+          });
+        }
+  
+        var chart = new Chart(selectCanvas, {
+          type: 'doughnut',
+          data: {
+            labels: _get_data.labels,
+            datasets: chart_data
+          },
+          options: {
+            legend: {
+              display: _get_data.legend ? _get_data.legend : false,
+              labels: {
+                boxWidth: 12,
+                padding: 20,
+                fontColor: '#6783b8'
+              }
+            },
+            rotation: -1.5,
+            cutoutPercentage: 70,
+            maintainAspectRatio: false,
+            tooltips: {
+              enabled: true,
+              rtl: NioApp.State.isRTL,
+              callbacks: {
+                title: function title(tooltipItem, data) {
+                  return data['labels'][tooltipItem[0]['index']];
+                },
+                label: function label(tooltipItem, data) {
+                  return data.datasets[tooltipItem.datasetIndex]['data'][tooltipItem['index']] + ' ' + _get_data.dataUnit;
+                }
+              },
+              backgroundColor: '#fff',
+              borderColor: '#eff6ff',
+              borderWidth: 2,
+              titleFontSize: 13,
+              titleFontColor: '#6783b8',
+              titleMarginBottom: 6,
+              bodyFontColor: '#9eaecf',
+              bodyFontSize: 12,
+              bodySpacing: 4,
+              yPadding: 10,
+              xPadding: 10,
+              footerMarginTop: 0,
+              displayColors: false
+            }
+          }
+        });
+      });
+    }
+
     NioApp.coms.docReady.push(function () {
       analyticsDoughnut();
+      analyticsDoughnutcomp1();
+      analyticsDoughnutcomp2();
+      analyticsDoughnutcomp3();
+      analyticsDoughnutcomp4();
     });
   }(NioApp, jQuery);
