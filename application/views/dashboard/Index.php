@@ -252,5 +252,5 @@
         </div><!-- .col -->
     </div>
 </div>
-<p class="small">Nota: Los valores utilizados como maximos en cada nivel es 4, de acuerdo a el marco <strong>DIGCOMP V. 2.1</strong></p>
+<p class="small">Nota: Los valores utilizados como maximos en cada nivel es 4, de acuerdo a el marco <strong>DIGCOMP V. 2.0</strong></p>
 <input type="hidden" id="base" value="<?php echo base_url(); ?>">

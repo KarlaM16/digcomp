@@ -505,18 +505,21 @@
           responsive: true,
           autoWidth: false,
           dom: dom,
+          // language: {
+          //   url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json',
+          // }
           language: {
             search: "",
-            searchPlaceholder: "Type in to Search",
-            lengthMenu: "<span class='d-none d-sm-inline-block'>Show</span><div class='form-control-select'> _MENU_ </div>",
+            searchPlaceholder: "Buscar",
+            lengthMenu: "<span class='d-none d-sm-inline-block'>Mostrar</span><div class='form-control-select'> _MENU_ </div>",
             info: "_START_ -_END_ of _TOTAL_",
-            infoEmpty: "No records found",
+            infoEmpty: "No se encontraron resultados.",
             infoFiltered: "( Total _MAX_  )",
             paginate: {
-              "first": "First",
-              "last": "Last",
-              "next": "Next",
-              "previous": "Prev"
+              "first": "Primero",
+              "last": "Último",
+              "next": "Siguiente",
+              "previous": "Anterior"
             }
           }
         },

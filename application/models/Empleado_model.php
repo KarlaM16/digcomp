@@ -77,7 +77,19 @@ class Empleado_model extends CI_Model
         return $this->db->get('competencias')->result();
     }
 
-    
+    // Esto va a obtener todos los empleados
+    public function getall(){
+        $this->db->order_by('id', 'asc');
+        return $this->db->get('employees')->result();
+    }
+
+    public function getone($global_id){
+        $this->db->select('e.id empleado_id,e.global_id,e.email,e.genero,e.edad,e.creation_time,e.formacion,c.*');
+        $this->db->from('employees e');
+        $this->db->join('competencias c', 'e.id = c.employee_id', 'inner');
+        $this->db->where('global_id', $global_id);
+        return $this->db->get()->row();
+    }
    
     
                         

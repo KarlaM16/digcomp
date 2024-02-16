@@ -39,28 +39,7 @@
                         <div class="nk-sidebar-menu" data-simplebar>
                             <ul class="nk-menu">
 
-                                <li class="nk-menu-heading">
-                                    <h6 class="overline-title text-primary-alt">Información General</h6>
-                                </li><!-- .nk-menu-heading -->
-
-                                <li class="nk-menu-item">
-                                    <a href="<?php echo site_url('empleados/index'); ?>" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
-                                        <span class="nk-menu-text">Instituciones</span>
-                                    </a>
-
-                                    <a href="<?php echo site_url('empleados/index'); ?>" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
-                                        <span class="nk-menu-text">Competencias Digitales</span>
-                                    </a>
-
-                                    <a href="<?php echo site_url('empleados/index'); ?>" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
-                                        <span class="nk-menu-text">Área 5</span>
-                                    </a>
-                                </li>
-
-                                <li class="nk-menu-heading">
+                            <li class="nk-menu-heading">
                                     <h6 class="overline-title text-primary-alt">General</h6>
                                 </li><!-- .nk-menu-heading -->
 
@@ -79,6 +58,35 @@
                                     </a>
                                 </li><!-- .nk-menu-item -->
 
+
+                                <li class="nk-menu-heading">
+                                    <h6 class="overline-title text-primary-alt">Información General</h6>
+                                </li><!-- .nk-menu-heading -->
+
+                                <li class="nk-menu-item">
+                                    <a href="<?php echo site_url('empleados/index'); ?>" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
+                                        <span class="nk-menu-text">Encuesta</span>
+                                    </a>
+
+                                <li class="nk-menu-item">
+                                    <a href="<?php echo site_url('empleados/index'); ?>" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
+                                        <span class="nk-menu-text">Instituciones</span>
+                                    </a>
+
+                                    <a href="<?php echo site_url('empleados/index'); ?>" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
+                                        <span class="nk-menu-text">Competencias Digitales</span>
+                                    </a>
+
+                                    <a href="<?php echo site_url('empleados/index'); ?>" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
+                                        <span class="nk-menu-text">Área 5</span>
+                                    </a>
+                                </li>
+
+                            
                                 <li class="nk-menu-heading">
                                     <h6 class="overline-title text-primary-alt">Administrador</h6>
                                 </li><!-- .nk-menu-heading -->
