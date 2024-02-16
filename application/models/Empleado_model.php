@@ -91,7 +91,38 @@ class Empleado_model extends CI_Model
         return $this->db->get()->row();
     }
    
+    public function getquestionone($data,$id){
+      
+
+        $this->db->select($data);
+        $this->db->from('competencias');
+        $this->db->join('employees', 'competencias.employee_id = employees.id', 'left');
+        $this->db->where('employees.global_id', $id);
+       $competencia= $this->db->get()->result();
+       $value=0;
+        foreach($competencia as $c){
+            foreach($c as $a){
+                $value+=$a;
+            }
+        }
+        return ($value/5);
+    }
     
+    public function getvalidationone($data,$id){
+        $this->db->select($data);
+        $this->db->from('competencias');
+        $this->db->join('employees', 'competencias.employee_id = employees.id', 'left');
+        $this->db->where('employees.global_id', $id);
+        $validacion=$this->db->get()->result();
+        $value=0;
+        foreach($validacion as $v){
+            foreach($v as $a){
+                $value+=$a;
+            }
+        }
+
+        return $value/2;
+    }
                         
 }
 

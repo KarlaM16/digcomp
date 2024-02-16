@@ -160,7 +160,7 @@
                     </div><!-- .traffic-channel -->
                     
                 </div>
-                <p class="text-right px-4"><a href="<?php echo base_url('dashboard/competencias/1');?>">Más Información <em class="ni ni-arrow-right"></em></a></p>
+                <p class="text-right px-4"><a href="<?php echo base_url('competencias/details/1');?>">Más Información <em class="ni ni-arrow-right"></em></a></p>
             </div><!-- .card -->
         </div><!-- .col -->
         <div class="col-md-4 col-xxl-3">
@@ -188,7 +188,7 @@
                         </div><!-- .traffic-channel-group -->
                     </div><!-- .traffic-channel -->
                 </div>
-                <p class="text-right px-4"><a href="<?php echo base_url('dashboard/competencias/2');?>">Más Información <em class="ni ni-arrow-right"></em></a></p>
+                <p class="text-right px-4"><a href="<?php echo base_url('competencias/details/2');?>">Más Información <em class="ni ni-arrow-right"></em></a></p>
 
             </div><!-- .card -->
         </div><!-- .col -->
@@ -217,7 +217,7 @@
                         </div><!-- .traffic-channel-group -->
                     </div><!-- .traffic-channel -->
                 </div>
-                <p class="text-right px-4"><a href="<?php echo base_url('dashboard/competencias/3');?>">Más Información <em class="ni ni-arrow-right"></em></a></p>
+                <p class="text-right px-4"><a href="<?php echo base_url('competencias/details/3');?>">Más Información <em class="ni ni-arrow-right"></em></a></p>
 
             </div><!-- .card -->
         </div><!-- .col -->
@@ -246,7 +246,7 @@
                         </div><!-- .traffic-channel-group -->
                     </div><!-- .traffic-channel -->
                 </div>
-                <p class="text-right px-4"><a href="<?php echo base_url('dashboard/competencias/4');?>">Más Información <em class="ni ni-arrow-right"></em></a></p>
+                <p class="text-right px-4"><a href="<?php echo base_url('competencias/details/4');?>">Más Información <em class="ni ni-arrow-right"></em></a></p>
 
             </div><!-- .card -->
         </div><!-- .col -->

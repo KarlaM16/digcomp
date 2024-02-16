@@ -302,31 +302,7 @@ class Dashboard extends CI_Controller
 
     }
 
-    function competencias($competencia_id){
-        $competencia=array();
-        switch ($competencia_id) {
-            case 1:
-                $competencia=$this->getpreguntas($competencia_id);
-                break;
-            case 2:
-                $competencia=$this->getpreguntas($competencia_id);
-                break;
-            case 3:
-                $competencia=$this->getpreguntas($competencia_id);
-                break;
-            case 4:
-                $competencia=$this->getpreguntas($competencia_id);
-                break;
-            
-        }
-        
-        $data=array(
-            'about'=>$competencia,
-        );
-        $this->load->view('layouts/header');
-        $this->load->view('dashboard/competencia',$data);
-        $this->load->view('layouts/footer');
-    }
+    
 
     function getpreguntas($competencia_id){
         $preguntas=array();
