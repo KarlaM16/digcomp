@@ -28,12 +28,12 @@
                     <div class="nk-block nk-block-middle nk-auth-body  wide-xs">
                         <div class="brand-logo pb-3 text-center">
                             <a href="html/index.html" class="logo-link">
-                                <img class="logo-utpl" src="<?php echo base_url('assets/images/logo-utpl.png'); ?>">
+                                <img class="logo-utpl" src="<?php echo base_url('assets/images/logo-utpl.png'); ?>"><!--direccion exacta donde se encuentra x cosa-->
                             </a>
                         </div>
                         <div class="card card-bordered">
                             <div class="card-inner card-inner-lg">
-                                <?php if ($this->session->flashdata('error')!=null) : ?>
+                                <?php if ($this->session->flashdata('error')!=null) : ?> <!--Flashdata codeigniter:los datos estaran disponibles solo hasta la siguiente solicitud-->
                                     <div class="alert alert-fill alert-danger alert-dismissible alert-icon">
                                         <em class="icon ni ni-cross-circle"></em> <strong>Importante: </strong><?php echo $this->session->flashdata('error');?> <button class="close" data-dismiss="alert"></button>
                                     </div>

@@ -5,7 +5,7 @@
                 <div class="nk-block-head nk-block-head-lg">
                     <div class="nk-block-between">
                         <div class="nk-block-head-content">
-                            <h4 class="nk-block-title">Competencia #<?php echo $numero; ?></h4>
+                            <h4 class="nk-block-title">Competencia #<?php echo $numero; ?></h4><!--el numero representa al id, controlador-->
                             <div class="nk-block-des">
                                 <p>Estadística de las preguntas de la competencia # <?php echo $numero; ?></p>
                             </div>
@@ -26,18 +26,18 @@
                                         <th>Cantidad</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <?php foreach ($preguntas as $p) : ?>
+                                <tbody> <!--llenamos la tabla-->
+                                    <?php foreach ($preguntas as $p) : ?> <!--recorremos el array de preguntas-->
                                         <?php $verify = str_split($p->codigo, 1) ?>
-                                        <?php if ($verify[0] == 'P') : ?>
+                                        <?php if ($verify[0] == 'P') : ?><!--p servira para el codigo de la pregunta-->
                                             <tr>
                                                 <td class=""><?php echo $p->codigo; ?></td>
                                                 <td  class=""><?php echo $p->descripcion;; ?></td>
                                                 <td  class="">
-                                                    <ul>
-                                                        <?php if ($verify[2] == 1) : ?>
-                                                            <?php $count=1; foreach ($evaluacion[0] as $e) : ?>
-                                                                <li>N-<?php echo $count++;?><span class="badge badge-primary"><?php echo $e; ?></span></li>
+                                                    <ul> <!--para el nivel-->
+                                                        <?php if ($verify[2] == 1) : ?> 
+                                                            <?php $count=1; foreach ($evaluacion[0] as $e) : ?> <!-- con el metodo de evaluacion del controlador-->
+                                                                <li>N-<?php echo $count++;?><span class="badge badge-primary"><?php echo $e; ?></span></li><!--imprime cuantos han dicho ese nivel-->
                                                             <?php endforeach; ?>
                                                         <?php elseif ($verify[2] == 2) : ?>
                                                             <?php $count_2=1; foreach ($evaluacion[1] as $e) : ?>

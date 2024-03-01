@@ -1,12 +1,12 @@
 <div class="nk-block nk-block-lg">
-    <?php if ($this->session->flashdata('success') != null) : ?>
+    <?php if ($this->session->flashdata('success') != null) : ?> <!--flashdata Codeigniter3: datos que solo estaran disponibles para una breve solicitud-->
         <div class="alert alert-fill alert-success alert-dismissible alert-icon">
-            <em class="icon ni ni-cross-circle"></em> <strong>Importante: </strong><?php echo $this->session->flashdata('success');?>
+            <em class="icon ni ni-cross-circle"></em> <strong>Importante: </strong><?php echo $this->session->flashdata('success');?><!--flashdata para agregar satisfactoriamente-->
              <button class="close" data-dismiss="alert"></button>
         </div>
     <?php elseif ($this->session->flashdata('error') != null) : ?>
         <div class="alert alert-fill alert-danger alert-dismissible alert-icon">
-            <em class="icon ni ni-cross-circle"></em> <strong>Importante: </strong><?php echo $this->session->flashdata('error'); ?>
+            <em class="icon ni ni-cross-circle"></em> <strong>Importante: </strong><?php echo $this->session->flashdata('error'); ?><!--flashdata, alert para el error al agreagar-->
             <button class="close" data-dismiss="alert"></button>
         </div>
     <?php endif; ?>
@@ -30,7 +30,7 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody> <!--para la actividad de editar cambiar y eliminar usuarios de la tabla, usamos foreach para recorrer el array objeto-->
                     <?php $count = 1;
                     foreach ($usuarios as $u) : ?>
                         <tr>
@@ -98,7 +98,7 @@
                             </div>
                         </div>
                         <div class="row justify-content-center">
-                            <button type="submit" class="btn btn-primary btn-xs"><em class="icon ni ni-save"></em> Guardar</button>
+                            <button type="submit" class="btn btn-primary btn-xs"><em class="icon ni ni-save"></em> Guardar Información</button>
                         </div>
                     </div>
                 </form>
@@ -117,7 +117,7 @@
                 <h5 class="modal-title">Actualizar datos del usuario</h5>
             </div>
             <div class="modal-body">
-                <form action="<?= base_url('usuarios/update'); ?>" method="post">
+                <form action="<?= base_url('usuarios/update'); ?>" method="post"> <!--llama al controlador usuario y de ahi a la funcion del controlador-->
                     <input type="hidden" id="edit_user_id" name="id" value="">
                     <div class="nk-block">
                         <div class="form-group col-12">
@@ -166,7 +166,7 @@
                 <h5 class="modal-title">Actualizar contraseña del usuario</h5>
             </div>
             <div class="modal-body">
-                <form action="<?= base_url('usuarios/changepassword'); ?>" method="post">
+                <form action="<?= base_url('usuarios/changepassword'); ?>" method="post"> <!--llama al controlador usuario y de ahi a la funcion del controlador-->
                     <div class="nk-block">
                         <input type="hidden" id="change_user_id" value="" name="id">
                         <div class="form-group col-12">
@@ -202,7 +202,7 @@
                         <p class="text-danger text-center font-weight-bold">Este usuario sera eliminado y ya no podra iniciar sesión</p>
                         <p class="text-danger text-center font-weight-bold">¿Desea usted eliminarlo?</p>
                         <div class="row justify-content-center">
-                            <button type="submit" class="btn btn-primary btn-xs"><em class="icon ni ni-save"></em> Guardar</button>
+                            <button type="submit" class="btn btn-primary btn-xs"><em class="icon ni ni-save"></em>Eliminar</button>
                         </div>
                     </div>
                 </form>

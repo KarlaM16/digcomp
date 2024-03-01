@@ -12,8 +12,8 @@
     <!-- Page Title  -->
     <title>Competencias Digitales. Área 5</title>
     <!-- StyleSheets  -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/dashlite.css?ver=2.4.0'); ?>">
-    <link id="skin-default" rel="stylesheet" href="<?php echo base_url('assets/css/theme.css?ver=2.4.0'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/dashlite.css?ver=2.4.0'); ?>"> <!--llamamos a los estilos de la plantilla-->
+    <link id="skin-default" rel="stylesheet" href="<?php echo base_url('assets/css/theme.css?ver=2.4.0'); ?>"> <!--llamamos a los estilos de la plantilla desde la carpeta assets-->
 </head>
 
 <body class="nk-body bg-lighter npc-general has-sidebar ">
@@ -44,7 +44,7 @@
                                 </li><!-- .nk-menu-heading -->
 
                                 <li class="nk-menu-item">
-                                    <a href="<?php echo site_url('dashboard/index'); ?>" class="nk-menu-link">
+                                    <a href="<?php echo site_url('dashboard/index'); ?>" class="nk-menu-link"> <!-- la direcccion por defecto al estar en la pagina-->
                                         <span class="nk-menu-icon"><em class="icon ni ni-dashlite"></em></span>
                                         <span class="nk-menu-text">Principal</span>
                                     </a>
@@ -52,7 +52,7 @@
 
                                 <li class="nk-menu-item">
 
-                                    <a href="<?php echo site_url('empleados/index'); ?>" class="nk-menu-link">
+                                    <a href="<?php echo site_url('empleados/index'); ?>" class="nk-menu-link"> <!--al aplastar empleados nos manda a la pagina empleados/indes-->
                                         <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
                                         <span class="nk-menu-text">Empleados</span>
                                     </a>
@@ -114,7 +114,7 @@
                             </div>
                             <div class="nk-header-brand d-xl-none">
                               
-                                <img class="logo-light logo-img logo-img-lg" src="<?php echo base_url('assets/logo-utpl.png'); ?>" srcset="./images/logo-utpl.png 4x" alt="logo-utpl.png">
+                                <img class="logo-light logo-img logo-img-lg" src="<?php echo base_url('assets/logo-utpl.png'); ?>" srcset="./images/logo-utpl.png 4x" alt="logo-utpl.png"> <!--llamando logos de la carpeta assets-->
                                 <img class="logo-dark logo-img logo-img-lg" src="<?php echo base_url('assets/images/logo-utpl.png'); ?>" srcset="./images/logo-utpl.png 4x" alt="logo-utpl.png">
                                 
                             </div><!-- .nk-header-brand -->
@@ -135,6 +135,7 @@
                                                 </div>
                                             </div>
                                         </a>
+                                        <!--informacion segun la cuenta del usuario en el que estemos-->
                                         <div class="dropdown-menu dropdown-menu-md dropdown-menu-right dropdown-menu-s1">
                                             <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
                                                 <div class="user-card">

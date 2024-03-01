@@ -17,7 +17,7 @@
                             <span class="tb-lead">Empleados Encuestados</span>
                         </div>
                         <div class="nk-tb-col nk-tb-sessions">
-                            <span class="tb-sub tb-amount"><span><?php echo $employees; ?></span></span>
+                            <span class="tb-sub tb-amount"><span><?php echo $employees; ?></span></span> <!---manda al controlador para que pida y presente lo que hace en el modelo-->
                         </div>
 
 
@@ -27,7 +27,7 @@
                             <span class="tb-lead">Femenino</span>
                         </div>
                         <div class="nk-tb-col nk-tb-sessions">
-                            <span class="tb-sub tb-amount"><span><?php echo $female; ?></span></span>
+                            <span class="tb-sub tb-amount"><span><?php echo $female; ?></span></span><!-- presenta los valores que llama al controlador para que se calcule en la funcione del modelo-->
                         </div>
 
                     </div><!-- .nk-tb-item -->
@@ -61,13 +61,13 @@
                             <p>Se muestran el analisis de edad para los encuestados.</p>
                         </div>
                     </div>
-                    <div class="progress-list gy-3">
+                    <div class="progress-list gy-3"> <!--aqui se hace un foreach para calcular el porcentaje q representan las edades-->
                         <?php foreach ($edades as $e) : ?>
-                            <?php $porcentaje = (($e->cantidad / $employees) * 100); ?>
+                            <?php $porcentaje = (($e->cantidad / $employees) * 100); ?> <!--- cantidad para numero de empleados *100-->
                             <div class="progress-wrap">
                                 <div class="progress-text">
-                                    <div class="progress-label"><?= $e->edad; ?></div>
-                                    <div class="progress-amount"><?php echo number_format($porcentaje, 2, '.', ',') . '%'; ?></div>
+                                    <div class="progress-label"><?= $e->edad; ?></div><!--presentando la edad-->
+                                    <div class="progress-amount"><?php echo number_format($porcentaje, 2, '.', ',') . '%'; ?></div><!--para que el porcentaje sea con 2 decimales y aparte salga el simbolo %-->
                                 </div>
                                 <div class="progress progress-md">
                                     <div class="progress-bar" data-progress="<?php echo $e->cantidad; ?>" style="width: <?php echo number_format($porcentaje, 2, '.', ',') . '%'; ?>;"></div>
@@ -114,7 +114,7 @@
                         </div>
                         <div class="traffic-channel-group g-2">
                             <div class="">
-                                <div class="title"><span class="dot dot-lg sq" data-bg="#9cabff"></span><span class="small">Problemas Técnicos.</span> <small class="amount"><?php echo number_format($competencias->competencia_1 * .25, 2, '.', ','); ?> %</small></div>
+                                <div class="title"><span class="dot dot-lg sq" data-bg="#9cabff"></span><span class="small">Problemas Técnicos.</span> <small class="amount"><?php echo number_format($competencias->competencia_1 * .25, 2, '.', ','); ?> %</small></div><!--llama al controlador competencia_1 para mostrar el porcentaje de 25% que representa-->
                             </div>
                             <div class="">
                                 <div class="title"><span class="dot dot-lg sq" data-bg="#b8acff"></span><span class="small">Identificación de Necesidades y Respuestas Tecnólogicas.</span><small class="amount"><?php echo number_format($competencias->competencia_2 * .25, 2, '.', ','); ?> %</small></div>
@@ -147,11 +147,11 @@
                         <div class="traffic-channel-group g-2">
                             <div class="traffic-channel-data">
                                 <div class="title"><span class="dot dot-lg sq" data-bg="#84DB7B"></span><span></span></div>
-                                <div class="amount"><?php echo number_format($competencias->competencia_1); ?> <small><?php echo number_format(($competencias->competencia_1 * .25), 2, '.', ','); ?>%</small></div>
+                                <div class="amount"><?php echo number_format($competencias->competencia_1); ?> <small><?php echo number_format(($competencias->competencia_1 * .25), 2, '.', ','); ?>%</small></div><!--etiqeuta de capacitados q viene desde el calculo controlador-->
                             </div>
                             <div class="traffic-channel-data">
                                 <div class="title"><span class="dot dot-lg sq" data-bg="#D86B52"></span><span></span></div>
-                                <div class="amount"><?php echo number_format(100 - $competencias->competencia_1); ?> <small><?php echo number_format(25 - ($competencias->competencia_1 * .25), 2, '.', ','); ?>%</small></div>
+                                <div class="amount"><?php echo number_format(100 - $competencias->competencia_1); ?> <small><?php echo number_format(25 - ($competencias->competencia_1 * .25), 2, '.', ','); ?>%</small></div><!--resta de 100 el porcentaje de capacitados-->
                             </div>
                             <p>Nivel : <span class="badge badge-primary"><?php echo number_format($niveles->nivel_1, 2, '.', ','); ?></span></p>
                             
@@ -160,7 +160,7 @@
                     </div><!-- .traffic-channel -->
                     
                 </div>
-                <p class="text-right px-4"><a href="<?php echo base_url('competencias/details/1');?>">Más Información <em class="ni ni-arrow-right"></em></a></p>
+                <p class="text-right px-4"><a href="<?php echo base_url('competencias/details/1');?>">Más Información <em class="ni ni-arrow-right"></em></a></p> <!---aqui dirige a los detalles vista controlador y modelo de competencias-->
             </div><!-- .card -->
         </div><!-- .col -->
         <div class="col-md-4 col-xxl-3">

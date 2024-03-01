@@ -39,7 +39,7 @@ $('#edit-user').on('show.bs.modal', function (event) {
   });
 
   
-
+  //area
   "use strict";
   !function (NioApp, $) {
     var competencia_1=0;
@@ -49,15 +49,15 @@ $('#edit-user').on('show.bs.modal', function (event) {
    
    var base=$('#base').val();
 
-    $.ajax({
+    $.ajax({//llamadas al servidor desde el navegador sin necesidad de refrescar la pagina
       'async': false,
       'method': "POST",
       'url': base + "dashboard/getcomp_1",
       'global': false,
       'dataType': "json",
-      'success': function(request) {
+      'success': function(request) {//objeto request permite el acceso de toda la informacion de la pagina al servidor
         
-        competencia_1 = (request['competencia_1']*.25).toFixed(2);
+        competencia_1 = (request['competencia_1']*.25).toFixed(2);//saber el porcentaje de cada competencia
         competencia_2 = (request['competencia_2']*.25).toFixed(2);
         competencia_3 = (request['competencia_3']*.25).toFixed(2);
         competencia_4 = (request['competencia_4']*.25).toFixed(2);
@@ -72,7 +72,7 @@ $('#edit-user').on('show.bs.modal', function (event) {
       legend: false,
       datasets: [{
         borderColor: "#fff",
-        background: ["#798bff", "#b8acff", "#ffa9ce", "#f9db7b"],
+        background: ["#798bff", "#b8acff", "#ffa9ce", "#f9db7b"],//colores de etiquetas del area
         data: [competencia_1, competencia_2, competencia_3,competencia_4],
       }]
     };

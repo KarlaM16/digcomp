@@ -5,7 +5,7 @@
                 <div class="nk-block-head nk-block-head-lg">
                     <div class="nk-block-between">
                         <div class="nk-block-head-content">
-                            <h4 class="nk-block-title">Información Personal</h4>
+                            <h4 class="nk-block-title">Información Personal</h4><!--llenamos la tabla básico de cada empleado con los datos de Empleado_model funcion getone y getall-->
                             <div class="nk-block-des">
                                 <p>Información Basica, obtenida en la encuesta del AREA 5.</p>
                             </div>
@@ -15,6 +15,7 @@
                         </div>
                     </div>
                 </div><!-- .nk-block-head -->
+                <!--Empleado_model-->
                 <div class="nk-block">
                     <div class="nk-data data-list">
                         <div class="data-head">
@@ -77,7 +78,7 @@
                     </div><!-- .card-inner -->
                    
                     <div class="card-inner p-0">
-                        <ul class="link-list-menu">
+                        <ul class="link-list-menu"> <!--menu refereenciando a los items que pueede seleccionar para empleado-->
                             <li><a class="active" href="<?php echo base_url('empleados/details/'.$empleado->global_id); ?>"><em class="icon ni ni-user-fill-c"></em><span>Información Personal</span></a></li>
                             <li><a href="<?php echo base_url('empleados/competencia/'.$empleado->global_id); ?>"><em class="icon ni ni-bell-fill"></em><span>Competencias</span></a></li>
                             <li><a href="<?php echo base_url('empleados/preguntas/'.$empleado->global_id); ?>"><em class="icon ni ni-activity-round-fill"></em><span>Preguntas</span></a></li>

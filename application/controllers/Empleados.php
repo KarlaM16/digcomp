@@ -22,6 +22,7 @@ class Empleados extends CI_Controller {
         
     }
 
+    //para los detalles del empleado
     public function details($id){
         $data=array(
             'empleado'=>$this->Empleado_model->getone($id),

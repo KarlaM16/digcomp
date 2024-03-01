@@ -13,7 +13,7 @@ class Usuarios extends CI_Controller
     $this->load->model('User_model');
   }
 
-
+//cargamos las funciones del index que deben salir por defecto
   public function index()
   {
     $usuarios = $this->User_model->getall();
@@ -26,7 +26,7 @@ class Usuarios extends CI_Controller
   public function create()
   {
     $password = $this->input->post('password');
-    $pbcrypt = password_hash($password, PASSWORD_BCRYPT);
+    $pbcrypt = password_hash($password, PASSWORD_BCRYPT);//encriptar la contraseña
     $data = array(
       'nombre' => $this->input->post('name'),
       'email' => $this->input->post('email'),
@@ -79,7 +79,7 @@ class Usuarios extends CI_Controller
   public function changepassword(){
     $id=$this->input->post('id');
     $password=$this->input->post('password');
-    $encrypt=password_hash($password,PASSWORD_BCRYPT);
+    $encrypt=password_hash($password,PASSWORD_BCRYPT);//encriptar contraseña
 
     $data=array(
       'password'=>$encrypt,

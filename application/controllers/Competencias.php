@@ -19,16 +19,18 @@ class Competencias extends CI_Controller
 
     }
 
+    //detalles para cada competencia
+
     public function details($competencia_id){
         $questions=$this->Competencia_model->getquestions();
         
         //$data1=str_split($questions[0]->codigo);
         $preguntas=array();
         foreach($questions as $q){
-            $pregunta=str_split($q->codigo);
+            $pregunta=str_split($q->codigo);//para dividir las preguntas traida
             if($pregunta[1]==$competencia_id){
                 
-                array_push($preguntas,$q);
+                array_push($preguntas,$q);//llena array push de preguntas y respuestas
             }
         }
         

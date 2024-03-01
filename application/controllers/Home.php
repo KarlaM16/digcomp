@@ -5,14 +5,14 @@
  
  class Home extends CI_Controller {
  
-    
+    //constructor
     public function __construct()
     {
         parent::__construct();
         $this->load->model('User_model');
         
     }
-    
+    //funcion principal. Presenta login, si usuario esta en userdata, pasa a la pagina dashboard/index, caso contrarios sigue en home
     public function index()
     {
         if($this->session->userdata('login')){
@@ -23,7 +23,7 @@
         }
         
     }
-
+    //funcion login
     public function login()
     {
         if($this->session->userdata('login')){
@@ -35,21 +35,23 @@
        
     }
 
+    //funcion autenticarse
+
     public function auth()
     {
-        $email=$this->input->post('email');
+        $email=$this->input->post('email'); //metodo input y post html
         $password=$this->input->post('password');
-        $user_current=$this->User_model->login($email,$password);
+        $user_current=$this->User_model->login($email,$password);//redirecciona al modelo
         if($user_current){
-            $user_data=array(
-                'name'=>$user_current->nombre,
+            $user_data=array(//almacena en el array
+                'name'=>$user_current->nombre,//recorre
                 'email'=>$user_current->email,
                 'role'=>$user_current->rol,
                 'login'=>true,
             );
             
             
-            $this->session->set_userdata($user_data);
+            $this->session->set_userdata($user_data);//si estan los datos para recorrer redireccion a la principal
             redirect(site_url('dashboard/index'));
             
         }
@@ -62,10 +64,11 @@
 
     }
 
+    //funcion salir 
     public function logout()
     {
        
-        $this->session->sess_destroy();
+        $this->session->sess_destroy();//desruyte
         redirect(site_url('home/login'));
     }
 

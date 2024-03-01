@@ -13,12 +13,12 @@ class Empleado_model extends CI_Model
     
     public function countemployees(){
         
-        $this->db->select('count(e.id) as employees');
+        $this->db->select('count(e.id) as employees');//de la base de datos seleccionamos por id para contar
         $this->db->from('employees e');
-        $total= $this->db->get()->row();
-        return $total->employees;
+        $total= $this->db->get()->row();//total apunta a la bd obtiene por fila 
+        return $total->employees;//retorna el total de empleados
     }
-
+    //cuenta femeninos desde la bd
     public function countfemale(){
         $this->db->select('count(f.id) as female');
         $this->db->from('employees f');
@@ -26,7 +26,7 @@ class Empleado_model extends CI_Model
         $total=$this->db->get()->row();
         return $total->female;
     }
-
+    //cuenta masculinos desde la bd
     public function countmale(){
         $this->db->select('count(f.id) as male');
         $this->db->from('employees f');
@@ -34,15 +34,15 @@ class Empleado_model extends CI_Model
         $total=$this->db->get()->row();
         return $total->male;
     }
-
+    //cuenta la formacion
     public function formacion(){
-        $this->db->select('formacion');
-        $this->db->order_by('formacion', 'asc');
+        $this->db->select('formacion');//selecciona formacion en bd
+        $this->db->order_by('formacion', 'asc');//orden en  ascendente
         
         return $this->db->get('employees')->result();
     }
 
-    public function getcountformacion($formacion){
+    public function getcountformacion($formacion){//funcion obtiene el conteo de formacion
         $this->db->select('count(id) as cantidad');
         
         $this->db->from('employees');
@@ -52,7 +52,7 @@ class Empleado_model extends CI_Model
         return  $data->cantidad;
     }
 
-    public function edades(){
+    public function edades(){ //selecciona edad en la base de datos retorna este valor para empleados, agragandos a un result.
         $this->db->select('edad');    
         return $this->db->get('employees')->result();
     }
@@ -83,6 +83,7 @@ class Empleado_model extends CI_Model
         return $this->db->get('employees')->result();
     }
 
+    //esto permitirá obtener la informacion por un empleado para llenar la tabla basico de detalles
     public function getone($global_id){
         $this->db->select('e.id empleado_id,e.global_id,e.email,e.genero,e.edad,e.creation_time,e.formacion,c.*');
         $this->db->from('employees e');
