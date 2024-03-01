@@ -11,38 +11,42 @@ class Dashboard extends CI_Controller
         if (!$this->session->userdata('login')) {
             redirect(site_url('home/login'));
         }
-
-        $this->load->model('Empleado_model');
+        
+        $this->load->model(array('Empleado_model','Competencia_model'));
     }
 
     public function index()
     {
 
-        $employees = $this->Empleado_model->countemployees();
-
-        $formacion = $this->formacion();
-        $competencia_1=$this->getcompetencia1();
-        $competencia_2=$this->getcompetencia2();
-        $competencia_3=$this->getcompetencia3();
-        $competencia_4=$this->getcompetencia4();
-       
-        $porcentaje_competencias=$this->porcentaje_comp($competencia_1,$competencia_2,$competencia_3,$competencia_4);
+        $employees = $this->Empleado_model->countusuarios();
+        $competencias=$this->Competencia_model->getall();
+        $niveles=array();
+        foreach($competencias as $c){
+            $nivel=(object)array('nivel'=>0,'competencia'=>0,'ponderado'=>0);
+            $resultado=$this->getresult_competencia($c->id);
+            $nivel->competencia=$c->id;
+            $nivel->nivel=$resultado->promedio_total;
+            $nivel->ponderado=$resultado->ponderado;
+            array_push($niveles,$nivel);
+        }
         
-        $niveles=(object)array(
-            'nivel_1'=>$this->obtenernivel($competencia_1),
-            'nivel_2'=>$this->obtenernivel($competencia_2),
-            'nivel_3'=>$this->obtenernivel($competencia_3),
-            'nivel_4'=>$this->obtenernivel($competencia_4),
-        );
+        
+        $formacion = $this->formacion();
+        
+       
+        // $porcentaje_competencias=$this->porcentaje_comp($competencia_1,$competencia_2,$competencia_3,$competencia_4);
+        
+        
 
         $data = array(
+            'competencias'=>$competencias,
             'employees' => $employees,
             'female' => $this->Empleado_model->countfemale(),
             'male' => $this->Empleado_model->countmale(),
             'edades' => $this->getedad(),
             'formacion' => $formacion,
             'interesados' => $this->Empleado_model->countinteresados(),
-            'competencias'=>$porcentaje_competencias,
+            // 'competencias'=>$porcentaje_competencias,
             'niveles'=>$niveles,
         );
         $this->load->view('layouts/header');
@@ -50,17 +54,7 @@ class Dashboard extends CI_Controller
         $this->load->view('layouts/footer');
     }
 
-    public function obtenernivel($competencia){
-        $level=0;
-        $count=0;
-        foreach($competencia as $c){
-            $level+=$c->total_nivel;
-            $count++;
-        }
-
-        
-        return $level/$count;
-    }
+    
 
     public function formacion()
     {
@@ -124,163 +118,10 @@ class Dashboard extends CI_Controller
         return $listedad;
     }
 
-    public function getcomp_1(){
-        $competencia_1=$this->getcompetencia1();
-        $competencia_2=$this->getcompetencia2();
-        $competencia_3=$this->getcompetencia3();
-        $competencia_4=$this->getcompetencia4();
-       
-        $porcentaje_competencias=$this->porcentaje_comp($competencia_1,$competencia_2,$competencia_3,$competencia_4);
-        
-        echo json_encode($porcentaje_competencias);
-    }
+   
 
     
 
-    public function getcompetencia1()
-    {
-       $preguntas=$this->getpreguntas(1);
-        
-        //$campos=array_keys(get_object_vars($datos[0]));
-        
-        
-        $promedios=array();
-
-        foreach($preguntas as $p){
-            $promedio=(object)array(
-            'id'=>$p->id,'promedio'=>0,'ponderado'=>0,
-            'promedio_val'=>0,'ponderado_v'=>0,
-            'total_nivel'=>0,'total_ponderado'=>0
-        );
-            $prom=($p->pregunta_11+$p->pregunta_12+$p->pregunta_13+$p->pregunta_14+$p->pregunta_15)/5;
-            $promedio->promedio=$prom;
-            $pon=$prom*(12.5/100);
-            $promedio->ponderado=$pon;
-
-            $promval=($p->validacion_11+$p->validacion_12)/2;
-            $promedio->promedio_val=$promval;
-            $ponval=$promval*(12.5/100);
-            $promedio->ponderado_v=$ponval;
-
-            $promedio->total_nivel=($prom+$promval)/2;
-            $promedio->total_ponderado=$pon+$ponval;
-            array_push($promedios,$promedio);
-        }
-        
-        // array_sum(array_column($input, 'gozhi')); 
-        return $promedios;
-    }
-
-    public function getcompetencia2(){
-        
-        $preguntas=$this->getpreguntas(2);
-        
-        //$campos=array_keys(get_object_vars($datos[0]));
-        
-        
-        $promedios=array();
-
-        foreach($preguntas as $p){
-            $promedio=(object)array(
-            'id'=>$p->id,'promedio'=>0,'ponderado'=>0,
-            'promedio_val'=>0,'ponderado_v'=>0,
-            'total_nivel'=>0,'total_ponderado'=>0
-        );
-            $prom=($p->pregunta_21+$p->pregunta_22+$p->pregunta_23+$p->pregunta_24+$p->pregunta_25)/5;
-            $promedio->promedio=$prom;
-            $pon=$prom*(12.5/100);
-            $promedio->ponderado=$pon;
-
-            $promval=($p->validacion_21+$p->validacion_22)/2;
-            $promedio->promedio_val=$promval;
-            $ponval=$promval*(12.5/100);
-            $promedio->ponderado_v=$ponval;
-
-            $promedio->total_nivel=($prom+$promval)/2;
-            $promedio->total_ponderado=$pon+$ponval;
-            array_push($promedios,$promedio);
-        }
-        
-    
-        // array_sum(array_column($input, 'gozhi')); 
-        return $promedios;
-
-  
-    }
-
-    public function getcompetencia3(){
-        
-        $preguntas=$this->getpreguntas(3);
-        
-        //$campos=array_keys(get_object_vars($datos[0]));
-        
-        
-        $promedios=array();
-
-        foreach($preguntas as $p){
-            $promedio=(object)array(
-            'id'=>$p->id,'promedio'=>0,'ponderado'=>0,
-            'promedio_val'=>0,'ponderado_v'=>0,
-            'total_nivel'=>0,'total_ponderado'=>0
-        );
-            $prom=($p->pregunta_31+$p->pregunta_32+$p->pregunta_33+$p->pregunta_34+$p->pregunta_35)/5;
-            $promedio->promedio=$prom;
-            $pon=$prom*(12.5/100);
-            $promedio->ponderado=$pon;
-
-            $promval=($p->validacion_31+$p->validacion_32)/2;
-            $promedio->promedio_val=$promval;
-            $ponval=$promval*(12.5/100);
-            $promedio->ponderado_v=$ponval;
-
-            $promedio->total_nivel=($prom+$promval)/2;
-            $promedio->total_ponderado=$pon+$ponval;
-            array_push($promedios,$promedio);
-        }
-        
-   
-        // array_sum(array_column($input, 'gozhi')); 
-        return $promedios;
-
-  
-    }
-
-    public function getcompetencia4(){
-        
-        $preguntas=$this->getpreguntas(4);
-        
-        //$campos=array_keys(get_object_vars($datos[0]));
-        
-        
-        $promedios=array();
-
-        foreach($preguntas as $p){
-            $promedio=(object)array(
-            'id'=>$p->id,'promedio'=>0,'ponderado'=>0,
-            'promedio_val'=>0,'ponderado_v'=>0,
-            'total_nivel'=>0,'total_ponderado'=>0
-        );
-            $prom=($p->pregunta_41+$p->pregunta_42+$p->pregunta_43+$p->pregunta_44+$p->pregunta_45)/5;
-            $promedio->promedio=$prom;
-            $pon=$prom*(12.5/100);
-            $promedio->ponderado=$pon;
-
-            $promval=($p->validacion_41+$p->validacion_42)/2;
-            $promedio->promedio_val=$promval;
-            $ponval=$promval*(12.5/100);
-            $promedio->ponderado_v=$ponval;
-
-            $promedio->total_nivel=($prom+$promval)/2;
-            $promedio->total_ponderado=$pon+$ponval;
-            array_push($promedios,$promedio);
-        }
-        
-   
-        // array_sum(array_column($input, 'gozhi')); 
-        return $promedios;
-
-  
-    }
 
     function porcentaje_comp($comp_1,$comp_2,$comp_3,$comp_4){
         $competencias=(object)array('competencia_1'=>0, 'competencia_2'=>0, 
@@ -331,7 +172,63 @@ class Dashboard extends CI_Controller
     }
 
     
-    
+    public function getresult_empleado($competencia_id){
+        $usuarios=$this->Empleado_model->getall();
+        $resultados=array();
+        foreach($usuarios as $u){
+            $respuestas=$this->Competencia_model->getrespuestas($u->id,$competencia_id);
+            
+            $objetivo=(object)array(
+                'usuario_id'=>$u->id,
+                'preguntas'=>0,
+                'validacion'=>0,
+                'competencia_id'=>$competencia_id,
+                'total_preguntas'=>0,
+                'total_validacion'=>0,
+                'ponderado'=>0);
+
+            foreach ($respuestas as $r) {
+               $codigo= str_split($r->codigo);
+               if($codigo[0]=='P'){
+                $objetivo->preguntas+=$r->valor;
+               }
+               else{
+                $objetivo->validacion+=$r->valor;
+               }
+            }
+            array_push($resultados,$objetivo);
+
+        }
+        
+        
+       return $resultados;
+    }
+
+    public function  getresult_competencia($competencia_id){
+        $resultados=$this->getresult_empleado($competencia_id);
+        foreach ($resultados as $r) {
+            $r->total_preguntas=$r->preguntas/5;
+            $r->total_validacion=$r->validacion/2;
+        }
+
+        $competencia=(object)array('promedio_preguntas'=>0,'promedio_validacion'=>0,'promedio_total'=>0,'ponderado'=>0);
+        foreach($resultados as $r){
+            $competencia->promedio_preguntas+=($r->total_preguntas/100);
+            $competencia->promedio_validacion+=($r->total_validacion/100);
+        }
+        $competencia->promedio_total=($competencia->promedio_preguntas+$competencia->promedio_validacion)/2;
+        
+        foreach($resultados as $r){
+            	$r->ponderado=($r->total_preguntas*12.5)+($r->total_validacion*12.5);
+        }
+
+        foreach($resultados as $r){
+            $competencia->ponderado+=$r->ponderado/100;
+        }
+
+ 
+        return $competencia;
+    }
 
 }
 

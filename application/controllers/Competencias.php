@@ -27,7 +27,6 @@ class Competencias extends CI_Controller
         foreach($questions as $q){
             $pregunta=str_split($q->codigo);
             if($pregunta[1]==$competencia_id){
-                
                 array_push($preguntas,$q);
             }
         }
@@ -91,6 +90,7 @@ class Competencias extends CI_Controller
                 'c'=>0,
                 'd'=>0,
             );
+            
             foreach($valor as $v){
                 switch ($v) {
                     case 1:

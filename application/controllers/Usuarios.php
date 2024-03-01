@@ -16,10 +16,18 @@ class Usuarios extends CI_Controller
 
   public function index()
   {
-    $usuarios = $this->User_model->getall();
-    $data = array('usuarios' => $usuarios);
+    $data = array('usuarios'=>$this->User_model->getadmin());
+    
     $this->load->view('layouts/header');
     $this->load->view('usuarios/index.php', $data);
+    $this->load->view('layouts/footer');
+  }
+  
+  public function empleados(){
+    $data = array('usuarios'=>$this->User_model->getempleados());
+
+    $this->load->view('layouts/header');
+    $this->load->view('usuarios/empleados.php', $data);
     $this->load->view('layouts/footer');
   }
 

@@ -9,7 +9,7 @@ class Empleados extends CI_Controller {
         if (!$this->session->userdata('login')) {
             redirect(site_url('home/login'));
         }
-        $this->load->model('Empleado_model');
+        $this->load->model(array('Empleado_model','Competencia_model'));
         
     }
 
@@ -18,13 +18,14 @@ class Empleados extends CI_Controller {
         $data=array('empleados'=>$this->Empleado_model->getall());
         $this->load->view('layouts/header');
         $this->load->view('empleados/index',$data);
-        $this->load->view('layouts/footer');
-        
+        $this->load->view('layouts/footer');   
     }
 
     public function details($id){
+        
         $data=array(
             'empleado'=>$this->Empleado_model->getone($id),
+           
         );
         $this->load->view('layouts/header');
         $this->load->view('empleados/details',$data);
@@ -44,9 +45,18 @@ class Empleados extends CI_Controller {
     }
 
     public function preguntas($id){
+        $niveles=$this->Competencia_model->getniveles();
+        $respuestas=$this->Empleado_model->getrespuestas($id,1);
+        $respuestas_2=$this->Empleado_model->getrespuestas($id,2);
+        $respuestas_3=$this->Empleado_model->getrespuestas($id,3);
+        $respuestas_4=$this->Empleado_model->getrespuestas($id,4);
         $data=array(
             'empleado'=>$this->Empleado_model->getone($id),
-            
+            'niveles'=>$niveles,
+            'respuestas'=>$respuestas,
+            'respuestas_2'=>$respuestas_2,
+            'respuestas_3'=>$respuestas_3,
+            'respuestas_4'=>$respuestas_4,
         );
         
         $this->load->view('layouts/header');

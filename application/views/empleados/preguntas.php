@@ -17,13 +17,60 @@
                 </div><!-- .nk-block-head -->
                 <div class="nk-block">
                     <div class="row justify-content-around">
-                        <div class="col-6"><span class="dot dot-lg" data-bg="#6847E6"></span><small>1.-No se como hacerlo.</small></div>
-                        <div class="col-6"><span class="dot dot-lg" data-bg="#F1DB02"></span><small>2.-Puedo hacerlo con ayuda.</small></div>
-                        <div class="col-6"><span class="dot dot-lg" data-bg="#000D59"></span><small>3.-Puedo hacerlo por mi cuenta.</small></div>
-                        <div class="col-6"><span class="dot dot-lg" data-bg="#6E75FE"></span><small>4.-Puedo hacerlo y ayudo a otros.</small></div>
+                        <?php foreach ($niveles as $n) : ?>
+                            <?php if ($n->nombre != 'Validacion') : ?>
+                                <div class="col-6"><span class="dot dot-lg" data-bg="#6847E6"></span><small><?php echo $n->nombre; ?></small></div>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
                     </div>
                     <div class="row bg-primary justify-content-center">
                         <h5 class="text-white lead">Competencia 1</h5>
+                    </div>
+                    <div class="row">
+
+                        <div class="table-responsive">
+                            <table class="table table-sm table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Pregunta</th>
+                                        <th class="text-center">Nivel</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($respuestas as $r) : ?>
+                                        <?php if($r->nombre!='Validacion'):?>
+                                        <tr>
+                                            <td><small><?php echo $r->pregunta;?></small></td>
+                                            <td class="text-center small font-weight-bold"><?php echo $r->valor; ?></td>
+                                        </tr>
+                                        <?php endif;?>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+
+                            <table class="table table-sm table-bordered mb-1">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Validación</th>
+                                        <th class="text-center">Nivel</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach ($respuestas as $r) : ?>
+                                        <?php if($r->nombre=='Validacion'):?>
+                                        <tr>
+                                            <td><small><?php echo $r->pregunta;?></small></td>
+                                            <td class="text-center small font-weight-bold"><?php echo $r->valor; ?></td>
+                                        </tr>
+                                        <?php endif;?>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="row bg-primary justify-content-center">
+                        <h5 class="text-white lead">Competencia 2</h5>
                     </div>
                     <div class="row">
                         <div class="table-responsive">
@@ -35,86 +82,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td><small>Cuando uso un dispositivo hardware o software en mi trabajo, puedo identificar problemas técnicos que surgen.</small></td>
-                                        <td class="text-center small font-weight-bold"><?php echo $empleado->pregunta_11;?></td>
-                                    </tr>
-                                    <tr>
-                                        <td><small>Puedo identificar soluciones óptimas para resolver problemas técnicos que se presenten en los equipos y programas en mi trabajo.</small></td>
-                                        <td class="text-center small font-weight-bold"><?php echo $empleado->pregunta_12;?></td>
-                                    </tr>
-                                    <tr>
-                                        <td><small>Puedo señalar las razones por las que el internet presenta lentitud.</small></td>
-                                        <td class="text-center small font-weight-bold"><?php echo $empleado->pregunta_13;?></td>
-                                    </tr>
-                                    <tr>
-                                        <td><small>Puedo seleccionar la mejor configuración para mejorar el rendimiento del equipo.</small></td>
-                                        <td class="text-center small font-weight-bold"><?php echo $empleado->pregunta_14;?></td>
-                                    </tr>
-                                    <tr>
-                                        <td><small>En mi trabajo, puedo medir la velocidad de una conexión a Internet, y/o la fuerza de un WiFi o conexión de red celular</small></td>
-                                        <td class="text-center small font-weight-bold"><?php echo $empleado->pregunta_15;?></td>
-                                    </tr>
+                                <?php foreach ($respuestas_2 as $r) : ?>
+                                        <?php if($r->nombre!='Validacion'):?>
+                                        <tr>
+                                            <td><small><?php echo $r->pregunta;?></small></td>
+                                            <td class="text-center small font-weight-bold"><?php echo $r->valor; ?></td>
+                                        </tr>
+                                        <?php endif;?>
+                                    <?php endforeach; ?>
                                 </tbody>
-                                
-                            </table>
 
-                            <table class="table table-sm table-bordered mb-1">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center">Validación</th>
-                                        <th class="text-center">Nivel</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><small>Si el computador de su trabajo últimamente está muy lento, que aplicación usaría para optimizarlo:</small></td>
-                                        <td class="small font-weight-bold text-center"><?php echo $empleado->validacion_11;?></td>
-                                    </tr>
-                                    <tr>
-                                        <td><small>Si el internet de su equipo está muy lento, y quiere saber la velocidad, cuál de las siguientes aplicaciones usaría para medirla.</small></td>
-                                        <td class="small font-weight-bold text-center"><?php echo $empleado->validacion_12;?></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </div>
-                    <div class="row bg-primary justify-content-center">
-                        <h5 class="text-white lead">Competencia 2</h5>
-                    </div>
-                    <div class="row">
-                    <div class="table-responsive">
-                    <table class="table table-sm table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center">Pregunta</th>
-                                        <th class="text-center">Nivel</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><small>Si Ud. O un compañero presenta problemas de visión, puedo habilitar la configuración de accesibilidad del computador.</small></td>
-                                        <td class="text-center small font-weight-bold">3</td>
-                                    </tr>
-                                    <tr>
-                                        <td><small>Puedo modificar el idioma de una página web.</small></td>
-                                        <td class="text-center small font-weight-bold"><?php echo $empleado->pregunta_21;?></td>
-                                    </tr>
-                                    <tr>
-                                        <td><small>Puedo explicar claramente al técnico mis necesidades según mi área de trabajo para la configuración de la plataforma.</small></td>
-                                        <td class="text-center small font-weight-bold"><?php echo $empleado->pregunta_22;?></td>
-                                    </tr>
-                                    <tr>
-                                        <td><small>Para el almacenamiento de información puedo utilizar herramientas concretas como: DropBox, OneDrive, Box, pCloud, etc.</small></td>
-                                        <td class="text-center small font-weight-bold"><?php echo $empleado->pregunta_23;?></td>
-                                    </tr>
-                                    <tr>
-                                        <td><small>Si en el computador no encuentro mi información fácilmente, yo puedo elegir formas sencillas de ajustar y personalizar mi espacio virtual.</small></td>
-                                        <td class="text-center small font-weight-bold"><?php echo $empleado->pregunta_24;?></td>
-                                    </tr>
-                                </tbody>
-                                
                             </table>
                             <table class="table table-sm table-bordered mb-1">
                                 <thead>
@@ -124,14 +101,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td><small>Para reforzar mi autoformación, utilizaría:</small></td>
-                                        <td class="small font-weight-bold text-center"><?php echo $empleado->validacion_21;?></td>
-                                    </tr>
-                                    <tr>
-                                        <td><small>Necesito traducir un informe institucional, para ello me apoyaría en la siguiente aplicación:</small></td>
-                                        <td class="small font-weight-bold text-center"><?php echo $empleado->validacion_22;?></td>
-                                    </tr>
+                                <?php foreach ($respuestas_2 as $r) : ?>
+                                        <?php if($r->nombre=='Validacion'):?>
+                                        <tr>
+                                            <td><small><?php echo $r->pregunta;?></small></td>
+                                            <td class="text-center small font-weight-bold"><?php echo $r->valor; ?></td>
+                                        </tr>
+                                        <?php endif;?>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -140,8 +117,8 @@
                         <h5 class="text-white lead">Competencia 3</h5>
                     </div>
                     <div class="row">
-                    <div class="table-responsive">
-                    <table class="table table-sm table-bordered">
+                        <div class="table-responsive">
+                            <table class="table table-sm table-bordered">
                                 <thead>
                                     <tr>
                                         <th class="text-center">Pregunta</th>
@@ -149,28 +126,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td><small>Puedo hacer uso de herramientas de diseño gráfico para presentar contenido más interactivo y atractivo.</small></td>
-                                        <td class="text-center small font-weight-bold"><?php echo $empleado->pregunta_31;?></td>
-                                    </tr>
-                                    <tr>
-                                        <td><small>En la elaboración de proyectos, puedo optimizar recursos utilizando software de Gestión de Proyectos.</small></td>
-                                        <td class="text-center small font-weight-bold"><?php echo $empleado->pregunta_32;?></td>
-                                    </tr>
-                                    <tr>
-                                        <td><small>Puedo seleccionar entre diferentes repositorios digitales el que mejor se ajuste a mi tema de consulta.</small></td>
-                                        <td class="text-center small font-weight-bold"><?php echo $empleado->pregunta_33;?></td>
-                                    </tr>
-                                    <tr>
-                                        <td><small>Puedo participar activamente en un proyecto colaborativo con otros compañeros utilizando herramientas para trabajo remoto.</small></td>
-                                        <td class="text-center small font-weight-bold"><?php echo $empleado->pregunta_34;?></td>
-                                    </tr>
-                                    <tr>
-                                        <td><small>Puedo utilizar redes sociales para generar y compartir conocimiento.</small></td>
-                                        <td class="text-center small font-weight-bold"><?php echo $empleado->pregunta_35;?></td>
-                                    </tr>
+                                <?php foreach ($respuestas_3 as $r) : ?>
+                                        <?php if($r->nombre!='Validacion'):?>
+                                        <tr>
+                                            <td><small><?php echo $r->pregunta;?></small></td>
+                                            <td class="text-center small font-weight-bold"><?php echo $r->valor; ?></td>
+                                        </tr>
+                                        <?php endif;?>
+                                    <?php endforeach; ?>
                                 </tbody>
-                                
+
                             </table>
                             <table class="table table-sm table-bordered mb-1">
                                 <thead>
@@ -180,14 +145,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td><small>Necesito crear e intercambiar información colaborativa sobre un tema en boga, para ello puedo acudir a la siguiente herramienta:</small></td>
-                                        <td class="small font-weight-bold text-center"><?php echo $empleado->validacion_31;?></td>
-                                    </tr>
-                                    <tr>
-                                        <td><small>Necesito participar activamente con las personas de mi área de trabajo, buscando optimizar recursos y gestionar información, para lograrlo utilizaría:</small></td>
-                                        <td class="small font-weight-bold text-center"><?php echo $empleado->validacion_32;?></td>
-                                    </tr>
+                                <?php foreach ($respuestas_3 as $r) : ?>
+                                        <?php if($r->nombre=='Validacion'):?>
+                                        <tr>
+                                            <td><small><?php echo $r->pregunta;?></small></td>
+                                            <td class="text-center small font-weight-bold"><?php echo $r->valor; ?></td>
+                                        </tr>
+                                        <?php endif;?>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -196,8 +161,8 @@
                         <h5 class="text-white lead">Competencia 4</h5>
                     </div>
                     <div class="row">
-                    <div class="table-responsive">
-                    <table class="table table-sm table-bordered">
+                        <div class="table-responsive">
+                            <table class="table table-sm table-bordered">
                                 <thead>
                                     <tr>
                                         <th class="text-center">Pregunta</th>
@@ -205,28 +170,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td><small>Puedo reconocer que competencias digitales poseo y cuales me faltarían fortalecer.</small></td>
-                                        <td class="text-center small font-weight-bold"><?php echo $empleado->pregunta_41;?></td>
-                                    </tr>
-                                    <tr>
-                                        <td><small>Puedo identificar que competencia digital le falta potenciar a alguien de mi entorno.</small></td>
-                                        <td class="text-center small font-weight-bold"><?php echo $empleado->pregunta_42;?></td>
-                                    </tr>
-                                    <tr>
-                                        <td><small>Referente a los avances de las competencias digitales, puedo señalar los mejores espacios digitales para mantenerse actualizado de forma autónoma.</small></td>
-                                        <td class="text-center small font-weight-bold"><?php echo $empleado->pregunta_43;?></td>
-                                    </tr>
-                                    <tr>
-                                        <td><small>Para mejorar las competencias digitales, puedo indicar que metodologías basadas en el uso de las TIC's utilizar.</small></td>
-                                        <td class="text-center small font-weight-bold"><?php echo $empleado->pregunta_44;?></td>
-                                    </tr>
-                                    <tr>
-                                        <td><small>Puedo analizar que competencia digital necesito para cada actividad laboral a realizar.</small></td>
-                                        <td class="text-center small font-weight-bold"><?php echo $empleado->pregunta_45;?></td>
-                                    </tr>
+                                <?php foreach ($respuestas_4 as $r) : ?>
+                                        <?php if($r->nombre!='Validacion'):?>
+                                        <tr>
+                                            <td><small><?php echo $r->pregunta;?></small></td>
+                                            <td class="text-center small font-weight-bold"><?php echo $r->valor; ?></td>
+                                        </tr>
+                                        <?php endif;?>
+                                    <?php endforeach; ?>
                                 </tbody>
-                                
+
                             </table>
                             <table class="table table-sm table-bordered mb-1">
                                 <thead>
@@ -236,14 +189,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td><small>Puedo generar mis propios cursos en línea masivos y abiertos, utilizando la siguiente aplicación:</small></td>
-                                        <td class="small font-weight-bold"><?php echo $empleado->validacion_41;?></td>
-                                    </tr>
-                                    <tr>
-                                        <td><small>Para mi autoformación y actualización de competencias, puedo encontrar y utilizar MOOCs en la siguiente plataforma:</small></td>
-                                        <td class="small font-weight-bold"><?php echo $empleado->validacion_42;?></td>
-                                    </tr>
+                                <?php foreach ($respuestas_2 as $r) : ?>
+                                        <?php if($r->nombre=='Validacion'):?>
+                                        <tr>
+                                            <td><small><?php echo $r->pregunta;?></small></td>
+                                            <td class="text-center small font-weight-bold"><?php echo $r->valor; ?></td>
+                                        </tr>
+                                        <?php endif;?>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>

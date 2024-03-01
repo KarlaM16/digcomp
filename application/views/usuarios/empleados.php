@@ -12,7 +12,7 @@
     <?php endif; ?>
     <div class="nk-block-head nk-block-head">
         <div class="nk-block-head-content">
-            <h4 class="nk-block-title">Lista de Administradores Permitidos</h4>
+            <h4 class="nk-block-title">Lista de Empleados Encuestados</h4>
             <div class="nk-block-des d-flex justify-content-end px-3">
                 <button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalDefault">Agregar Usuario</button>
             </div>
@@ -20,30 +20,34 @@
     </div>
     <div class="card card-preview">
         <div class="card-inner">
-            <table class="table table-sm small">
+            <table class="table table-sm small datatable-init">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Rol</th>
-                        <th></th>
+                        <th scope="col">Global Id</th>
+                        <th scope="col">Edad</th>
+                        <th scope="col">Formación</th>
+                        <th>Genero</th>
+                        <th>Correo Electrónico</th>
+                        <!-- <th></th> -->
                     </tr>
                 </thead>
                 <tbody>
                     <?php $count = 1;
-                    
                     foreach ($usuarios as $u) : ?>
                         <tr>
                             <td><?php echo $count; ?></td>
-                            <td><?php echo $u->nombre; ?></td>
+                            <td><?php echo $u->global_id; ?></td>
+                            <td><?php echo $u->edad; ?></td>
+                            <td><?php echo $u->formacion; ?></td>
+                            <td><?php echo $u->genero; ?></td>
                             <td><?php echo $u->email; ?></td>
-                            <td><?php echo $u->rol; ?></td>
-                            <td>
-                                <a href="#" data-toggle="modal" data-target="#edit-user" data-user="<?php echo $u->id; ?>" class="btn btn-primary btn-xs"><em class="icon ni ni-edit"></em></a>
-                                <a href="#" data-toggle="modal" data-target="#change-user" data-user="<?php echo $u->id; ?>" class="btn btn-warning btn-xs"><em class="icon ni ni-lock-alt-fill"></em></a>
-                                <a href="#" data-toggle="modal" data-target="#delete-user" data-user="<?php echo $u->id; ?>" class="btn btn-danger btn-xs"><em class="icon ni ni-trash"></em></a>
-                            </td>
+
+                            <!-- <td>
+                                <a href="#" data-toggle="modal" data-target="#edit-user" data-user="<?php echo $u->id; ?>" class="text-primary"><em class="icon ni ni-edit"></em></a>
+                                <a href="#" data-toggle="modal" data-target="#change-user" data-user="<?php echo $u->id; ?>" class="text-warning"><em class="icon ni ni-lock-alt-fill"></em></a>
+                                <a href="#" data-toggle="modal" data-target="#delete-user" data-user="<?php echo $u->id; ?>" class="text-danger"><em class="icon ni ni-trash"></em></a>
+                            </td> -->
                         </tr>
                     <?php $count++;
                     endforeach; ?>

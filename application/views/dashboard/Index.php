@@ -99,7 +99,6 @@
         </div>
     </div>
     <div class="row g-gs">
-
         <div class="col-md-4 col-xxl-3">
             <div class="card card-bordered h-100">
                 <div class="card-inner">
@@ -113,25 +112,81 @@
                             <canvas class="analytics-doughnutc1" id="TrafficChannelDoughnutDatac1"></canvas>
                         </div>
                         <div class="traffic-channel-group g-2">
-                            <div class="">
-                                <div class="title"><span class="dot dot-lg sq" data-bg="#9cabff"></span><span class="small">Problemas Técnicos.</span> <small class="amount"><?php echo number_format($competencias->competencia_1 * .25, 2, '.', ','); ?> %</small></div>
-                            </div>
-                            <div class="">
-                                <div class="title"><span class="dot dot-lg sq" data-bg="#b8acff"></span><span class="small">Identificación de Necesidades y Respuestas Tecnólogicas.</span><small class="amount"><?php echo number_format($competencias->competencia_2 * .25, 2, '.', ','); ?> %</small></div>
-                            </div>
-                            <div class="">
-                                <div class="title"><span class="dot dot-lg sq" data-bg="#ffa9ce"></span><span class="small">Uso Creativo de Tecnología Digital.</span><small class="amount"><?php echo number_format($competencias->competencia_3 * .25, 2, '.', ','); ?> %</small></div>
-                            </div>
-                            <div class="">
-                                <div class="title"><span class="dot dot-lg sq" data-bg="#f9db7b"></span><span class="small">Lagunas en Competencias Digitales.</span><small><?php echo number_format($competencias->competencia_4 * .25, 2, '.', ','); ?> %</small></div>
-                            </div>
-                            <p>Nivel : <span class="badge badge-primary"><?php $nivel=0; foreach($niveles as $n){$nivel+=$n;} echo number_format($nivel/4,2,'.',',');?></span></p>
+                            <?php foreach ($competencias as $c) : ?>
+                                <div class="">
+                                    <div class="title"><span class="dot dot-lg sq" data-bg="#9cabff"></span><span class="small"><?php echo $c->codigo.' - '.$c->competencia;?></span> 
+                                    
+                                    <?php foreach ($niveles as $n) : ?>
+                                        <?php if ($n->competencia == $c->id) : ?>
+                                                <small class="amount"><?php echo number_format($n->ponderado * .25, 2); ?>%</small>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                            
+                            <p>Nivel : <span class="badge badge-primary"><?php $nivel = 0;
+                                                                            foreach ($niveles as $n) {
+                                                                                $nivel += $n->nivel;
+                                                                            }
+                                                                            echo number_format($nivel / 4, 2, '.', ','); ?></span></p>
 
                         </div><!-- .traffic-channel-group -->
                     </div><!-- .traffic-channel -->
                 </div>
             </div><!-- .card -->
         </div><!-- .col -->
+        <?php foreach ($competencias as $c) : ?>
+            <div class="col-md-4 col-xxl-3">
+                <div class="card card-bordered h-100">
+                    <div class="card-inner">
+                        <div class="card-title-group">
+                            <div class="card-title card-title-sm">
+                                <h6 class="title"><?php echo $c->codigo . ' - ' . $c->competencia; ?></h6>
+                            </div>
+                        </div>
+                        <div class="traffic-channel">
+                            <div class="traffic-channel-doughnut-ck">
+                                <canvas class="analytics-doughnutcomp<?php echo $c->id ?>" id="TrafficChannelDoughnutDatacomp<?php echo $c->id ?>"></canvas>
+                            </div>
+                            <div class="traffic-channel-group g-2">
+                                <div class="traffic-channel-data">
+                                    <div class="title"><span class="dot dot-lg sq" data-bg="#84DB7B"></span><span>Capacitado</span></div>
+
+                                    <?php foreach ($niveles as $n) : ?>
+                                        <?php if ($n->competencia == $c->id) : ?>
+                                            <div class="small">
+                                                <?php echo number_format($n->ponderado); ?>
+                                                <small><?php echo number_format($n->ponderado * .25, 2); ?>%</small>
+                                            </div>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                </div>
+                                <div class="traffic-channel-data">
+                                    <div class="title"><span class="dot dot-lg sq" data-bg="#D86B52"></span><span>Sin Capacitar</span></div>
+                                    <?php foreach ($niveles as $n) : ?>
+                                        <?php if ($n->competencia == $c->id) : ?>
+                                            <div class="amount"><?php echo number_format(100 - $n->ponderado); ?> <small><?php echo number_format(25 - ($n->ponderado * .25), 2, '.', ','); ?>%</small></div>
+
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                </div>
+                                <p>Nivel : <span class="badge badge-primary">
+                                        <?php foreach ($niveles as $n) : ?>
+                                            <?php if ($n->competencia == $c->id) : ?>
+                                                <?php echo number_format($n->nivel, 2, '.', ','); ?>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    </span></p>
+
+                            </div>
+                        </div><!-- .traffic-channel -->
+                    </div>
+                </div><!-- .card -->
+            </div>
+        <?php endforeach; ?>
+
+
         <div class="col-md-4 col-xxl-3">
             <div class="card card-bordered h-100">
                 <div class="card-inner">
@@ -147,20 +202,20 @@
                         <div class="traffic-channel-group g-2">
                             <div class="traffic-channel-data">
                                 <div class="title"><span class="dot dot-lg sq" data-bg="#84DB7B"></span><span></span></div>
-                                <div class="amount"><?php echo number_format($competencias->competencia_1); ?> <small><?php echo number_format(($competencias->competencia_1 * .25), 2, '.', ','); ?>%</small></div>
+                                <!-- <div class="amount"><?php echo number_format($competencias->competencia_1); ?> <small><?php echo number_format(($competencias->competencia_1 * .25), 2, '.', ','); ?>%</small></div> -->
                             </div>
                             <div class="traffic-channel-data">
                                 <div class="title"><span class="dot dot-lg sq" data-bg="#D86B52"></span><span></span></div>
-                                <div class="amount"><?php echo number_format(100 - $competencias->competencia_1); ?> <small><?php echo number_format(25 - ($competencias->competencia_1 * .25), 2, '.', ','); ?>%</small></div>
+                                <!-- <div class="amount"><?php echo number_format(100 - $competencias->competencia_1); ?> <small><?php echo number_format(25 - ($competencias->competencia_1 * .25), 2, '.', ','); ?>%</small></div> -->
                             </div>
-                            <p>Nivel : <span class="badge badge-primary"><?php echo number_format($niveles->nivel_1, 2, '.', ','); ?></span></p>
-                            
+                            <!-- <p>Nivel : <span class="badge badge-primary"><?php echo number_format($niveles->nivel_1, 2, '.', ','); ?></span></p> -->
+
                         </div><!-- .traffic-channel-group -->
-                        
+
                     </div><!-- .traffic-channel -->
-                    
+
                 </div>
-                <p class="text-right px-4"><a href="<?php echo base_url('competencias/details/1');?>">Más Información <em class="ni ni-arrow-right"></em></a></p>
+                <p class="text-right px-4"><a href="<?php echo base_url('competencias/details/1'); ?>">Más Información <em class="ni ni-arrow-right"></em></a></p>
             </div><!-- .card -->
         </div><!-- .col -->
         <div class="col-md-4 col-xxl-3">
@@ -178,17 +233,17 @@
                         <div class="traffic-channel-group g-2">
                             <div class="traffic-channel-data">
                                 <div class="title"><span class="dot dot-lg sq" data-bg="#84DB7B"></span><span></span></div>
-                                <div class="amount"><?php echo number_format($competencias->competencia_2); ?> <small><?php echo number_format(($competencias->competencia_2 * .25), 2, '.', ','); ?>%</small></div>
+                                <!-- <div class="amount"><?php echo number_format($competencias->competencia_2); ?> <small><?php echo number_format(($competencias->competencia_2 * .25), 2, '.', ','); ?>%</small></div> -->
                             </div>
                             <div class="traffic-channel-data">
                                 <div class="title"><span class="dot dot-lg sq" data-bg="#D86B52"></span><span></span></div>
-                                <div class="amount"><?php echo number_format(100 - $competencias->competencia_2); ?> <small><?php echo number_format(25 - ($competencias->competencia_2 * .25), 2, '.', ','); ?>%</small></div>
+                                <!-- <div class="amount"><?php echo number_format(100 - $competencias->competencia_2); ?> <small><?php echo number_format(25 - ($competencias->competencia_2 * .25), 2, '.', ','); ?>%</small></div> -->
                             </div>
-                            <p>Nivel : <span class="badge badge-primary"><?php echo number_format($niveles->nivel_2, 2, '.', ','); ?></span></p>
+                            <!-- <p>Nivel : <span class="badge badge-primary"><?php echo number_format($niveles->nivel_2, 2, '.', ','); ?></span></p> -->
                         </div><!-- .traffic-channel-group -->
                     </div><!-- .traffic-channel -->
                 </div>
-                <p class="text-right px-4"><a href="<?php echo base_url('competencias/details/2');?>">Más Información <em class="ni ni-arrow-right"></em></a></p>
+                <p class="text-right px-4"><a href="<?php echo base_url('competencias/details/2'); ?>">Más Información <em class="ni ni-arrow-right"></em></a></p>
 
             </div><!-- .card -->
         </div><!-- .col -->
@@ -207,17 +262,17 @@
                         <div class="traffic-channel-group g-2">
                             <div class="traffic-channel-data">
                                 <div class="title"><span class="dot dot-lg sq" data-bg="#84DB7B"></span><span></span></div>
-                                <div class="amount"><?php echo number_format($competencias->competencia_3); ?> <small><?php echo number_format(($competencias->competencia_3 * .25), 2, '.', ','); ?>%</small></div>
+                                <!-- <div class="amount"><?php echo number_format($competencias->competencia_3); ?> <small><?php echo number_format(($competencias->competencia_3 * .25), 2, '.', ','); ?>%</small></div> -->
                             </div>
                             <div class="traffic-channel-data">
                                 <div class="title"><span class="dot dot-lg sq" data-bg="#D86B52"></span><span></span></div>
-                                <div class="amount"><?php echo number_format(100 - $competencias->competencia_3); ?><small><?php echo number_format(25 - ($competencias->competencia_3 * .25), 2, '.', ','); ?>%</small></div>
+                                <!-- <div class="amount"><?php echo number_format(100 - $competencias->competencia_3); ?><small><?php echo number_format(25 - ($competencias->competencia_3 * .25), 2, '.', ','); ?>%</small></div> -->
                             </div>
-                            <p>Nivel : <span class="badge badge-primary"><?php echo number_format($niveles->nivel_3, 2, '.', ','); ?></span></p>
+                            <!-- <p>Nivel : <span class="badge badge-primary"><?php echo number_format($niveles->nivel_3, 2, '.', ','); ?></span></p> -->
                         </div><!-- .traffic-channel-group -->
                     </div><!-- .traffic-channel -->
                 </div>
-                <p class="text-right px-4"><a href="<?php echo base_url('competencias/details/3');?>">Más Información <em class="ni ni-arrow-right"></em></a></p>
+                <p class="text-right px-4"><a href="<?php echo base_url('competencias/details/3'); ?>">Más Información <em class="ni ni-arrow-right"></em></a></p>
 
             </div><!-- .card -->
         </div><!-- .col -->
@@ -236,17 +291,17 @@
                         <div class="traffic-channel-group g-2">
                             <div class="traffic-channel-data">
                                 <div class="title"><span class="dot dot-lg sq" data-bg="#84DB7B"></span><span></span></div>
-                                <div class="amount"><?php echo number_format($competencias->competencia_4); ?><small><?php echo number_format(($competencias->competencia_4 * .25), 2, '.', ','); ?>%</small></div>
+                                <!-- <div class="amount"><?php echo number_format($competencias->competencia_4); ?><small><?php echo number_format(($competencias->competencia_4 * .25), 2, '.', ','); ?>%</small></div> -->
                             </div>
                             <div class="traffic-channel-data">
                                 <div class="title"><span class="dot dot-lg sq" data-bg="#D86B52"></span><span></span></div>
-                                <div class="amount"><?php echo number_format(100 - $competencias->competencia_4); ?> <small><?php echo number_format(25 - ($competencias->competencia_4 * .25), 2, '.', ','); ?>%</small></div>
+                                <!-- <div class="amount"><?php echo number_format(100 - $competencias->competencia_4); ?> <small><?php echo number_format(25 - ($competencias->competencia_4 * .25), 2, '.', ','); ?>%</small></div> -->
                             </div>
-                            <p>Nivel : <span class="badge badge-primary"><?php echo number_format($niveles->nivel_4, 2, '.', ','); ?></span></p>
+                            <!-- <p>Nivel : <span class="badge badge-primary"><?php echo number_format($niveles->nivel_4, 2, '.', ','); ?></span></p> -->
                         </div><!-- .traffic-channel-group -->
                     </div><!-- .traffic-channel -->
                 </div>
-                <p class="text-right px-4"><a href="<?php echo base_url('competencias/details/4');?>">Más Información <em class="ni ni-arrow-right"></em></a></p>
+                <p class="text-right px-4"><a href="<?php echo base_url('competencias/details/4'); ?>">Más Información <em class="ni ni-arrow-right"></em></a></p>
 
             </div><!-- .card -->
         </div><!-- .col -->

@@ -33,10 +33,16 @@ class User_model extends CI_Model {
   }
 
   // ------------------------------------------------------------------------
-  public function getall()
+  public function getadmin()
   {
-   return $this->db->get('usuarios')->result();
+    $this->db->where('rol', 'Administrador');
+    return $this->db->get('usuarios')->result();
     
+  }
+
+  public function getempleados(){
+    $this->db->where('rol', 'Empleado');
+    return $this->db->get('usuarios')->result();
   }
 
   public function getone($id)

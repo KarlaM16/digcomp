@@ -26,9 +26,10 @@
                 <!-- content @s -->
                 <div class="nk-content ">
                     <div class="nk-block nk-block-middle nk-auth-body  wide-xs">
-                        <div class="brand-logo pb-3 text-center">
+                        <div class="brand-logo pb-4 text-center">
                             <a href="html/index.html" class="logo-link">
-                                <img class="logo-utpl" src="<?php echo base_url('assets/images/logo-utpl.png'); ?>">
+                                <img class="logo-light logo-img logo-img-lg" src="<?php echo base_url('assets/images/logo.png'); ?>" srcset="./images/logo2x.png 2x" alt="logo">
+                                <img class="logo-dark logo-img logo-img-lg" src="<?php echo base_url('assets/images/logo-dark.png'); ?>" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
                             </a>
                         </div>
                         <div class="card card-bordered">
@@ -40,9 +41,9 @@
                                 <?php endif; ?>
                                 <div class="nk-block-head">
                                     <div class="nk-block-head-content">
-                                        <h4 class="nk-block-title text-center">INGRESO</h4>
+                                        <h4 class="nk-block-title">Sign-In</h4>
                                         <div class="nk-block-des">
-                                            <p><em>DIGCOMP, COMPETENCIAS DIGITALES.</em></p>
+                                            <p>Access the CryptoLite panel using your email and passcode.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -50,28 +51,28 @@
                                 <form action="<?php echo base_url('home/auth'); ?>" method="post">
                                     <div class="form-group">
                                         <div class="form-label-group">
-                                            <label class="form-label" for="default-01">Email o Usuario</label>
+                                            <label class="form-label" for="default-01">Email or Username</label>
                                         </div>
-                                        <input type="text" name="email" class="form-control form-control-lg" id="default-01" placeholder="usuario@correo.com">
+                                        <input type="text" name="email" class="form-control form-control-lg" id="default-01" placeholder="Enter your email address or username">
                                     </div>
                                     <div class="form-group">
                                         <div class="form-label-group">
-                                            <label class="form-label" for="password">Contraseña</label>
-                                            <a class="link link-primary link-sm" href="html/pages/auths/auth-reset-v2.html">Olvido su contraseña?</a>
+                                            <label class="form-label" for="password">Passcode</label>
+                                            <a class="link link-primary link-sm" href="html/pages/auths/auth-reset-v2.html">Forgot Code?</a>
                                         </div>
                                         <div class="form-control-wrap">
                                             <a href="#" class="form-icon form-icon-right passcode-switch" data-target="password">
                                                 <em class="passcode-icon icon-show icon ni ni-eye"></em>
                                                 <em class="passcode-icon icon-hide icon ni ni-eye-off"></em>
                                             </a>
-                                            <input type="password" name="password" class="form-control form-control-lg" id="password" placeholder="Ingrese su clave">
+                                            <input type="password" name="password" class="form-control form-control-lg" id="password" placeholder="Enter your passcode">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-lg btn-primary btn-block">Iniciar Sesión</button>
                                     </div>
                                 </form>
-                                <div class="form-note-s2 text-center pt-4"> Nuevo Usuario? <a href="html/pages/auths/auth-register-v2.html">Crear una cuenta</a>
+                                <div class="form-note-s2 text-center pt-4"> New on our platform? <a href="html/pages/auths/auth-register-v2.html">Create an account</a>
                                 </div>
 
                             </div>
@@ -83,7 +84,7 @@
                                 <div class="col-lg-6 order-lg-last">
                                     <ul class="nav nav-sm justify-content-center justify-content-lg-end">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#">Términos y condiciones</a>
+                                            <a class="nav-link" href="#">Terms & Condition</a>
                                         </li>
                                     </ul>
                                 </div>
