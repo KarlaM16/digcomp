@@ -114,17 +114,27 @@
                         <div class="traffic-channel-group g-2">
                             <?php foreach ($competencias as $c) : ?>
                                 <div class="">
-                                    <div class="title"><span class="dot dot-lg sq" data-bg="#9cabff"></span><span class="small"><?php echo $c->codigo.' - '.$c->competencia;?></span> 
-                                    
-                                    <?php foreach ($niveles as $n) : ?>
-                                        <?php if ($n->competencia == $c->id) : ?>
+                                    <div class="title"><span class="dot dot-lg sq" data-bg="<?php
+                                                                                            if ($c->codigo == 'C1') : ?>
+                                    #798bff
+                                    <?php elseif ($c->codigo == 'C2') : ?>
+                                        #b8acff
+                                    <?php elseif ($c->codigo == 'C3') : ?>
+                                        #ffa9ce
+                                    <?php elseif ($c->codigo == 'C4') : ?>
+                                        #f9db7b
+                                     <?php endif; ?>   
+                                    "></span><span class="small"><?php echo $c->codigo . ' - ' . $c->competencia; ?></span>
+
+                                        <?php foreach ($niveles as $n) : ?>
+                                            <?php if ($n->competencia == $c->id) : ?>
                                                 <small class="amount"><?php echo number_format($n->ponderado * .25, 2); ?>%</small>
-                                        <?php endif; ?>
-                                    <?php endforeach; ?>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
-                            
+
                             <p>Nivel : <span class="badge badge-primary"><?php $nivel = 0;
                                                                             foreach ($niveles as $n) {
                                                                                 $nivel += $n->nivel;
@@ -166,7 +176,7 @@
                                     <div class="title"><span class="dot dot-lg sq" data-bg="#D86B52"></span><span>Sin Capacitar</span></div>
                                     <?php foreach ($niveles as $n) : ?>
                                         <?php if ($n->competencia == $c->id) : ?>
-                                            <div class="amount"><?php echo number_format(100 - $n->ponderado); ?> <small><?php echo number_format(25 - ($n->ponderado * .25), 2, '.', ','); ?>%</small></div>
+                                            <div class="small"><?php echo number_format(100 - $n->ponderado); ?> <small><?php echo number_format(25 - ($n->ponderado * .25), 2, '.', ','); ?>%</small></div>
 
                                         <?php endif; ?>
                                     <?php endforeach; ?>
@@ -182,129 +192,14 @@
                             </div>
                         </div><!-- .traffic-channel -->
                     </div>
+                    <p class="text-right px-4"><a href="<?php echo base_url('competencias/details/' . $c->id); ?>"><strong><em class="ni ni-arrow-right"></em></strong></a></p>
+
                 </div><!-- .card -->
             </div>
         <?php endforeach; ?>
 
 
-        <div class="col-md-4 col-xxl-3">
-            <div class="card card-bordered h-100">
-                <div class="card-inner">
-                    <div class="card-title-group">
-                        <div class="card-title card-title-sm">
-                            <h6 class="title">Problemas Tecnicos</h6>
-                        </div>
-                    </div>
-                    <div class="traffic-channel">
-                        <div class="traffic-channel-doughnut-ck">
-                            <canvas class="analytics-doughnutcomp1" id="TrafficChannelDoughnutDatacomp1"></canvas>
-                        </div>
-                        <div class="traffic-channel-group g-2">
-                            <div class="traffic-channel-data">
-                                <div class="title"><span class="dot dot-lg sq" data-bg="#84DB7B"></span><span></span></div>
-                                <!-- <div class="amount"><?php echo number_format($competencias->competencia_1); ?> <small><?php echo number_format(($competencias->competencia_1 * .25), 2, '.', ','); ?>%</small></div> -->
-                            </div>
-                            <div class="traffic-channel-data">
-                                <div class="title"><span class="dot dot-lg sq" data-bg="#D86B52"></span><span></span></div>
-                                <!-- <div class="amount"><?php echo number_format(100 - $competencias->competencia_1); ?> <small><?php echo number_format(25 - ($competencias->competencia_1 * .25), 2, '.', ','); ?>%</small></div> -->
-                            </div>
-                            <!-- <p>Nivel : <span class="badge badge-primary"><?php echo number_format($niveles->nivel_1, 2, '.', ','); ?></span></p> -->
 
-                        </div><!-- .traffic-channel-group -->
-
-                    </div><!-- .traffic-channel -->
-
-                </div>
-                <p class="text-right px-4"><a href="<?php echo base_url('competencias/details/1'); ?>">Más Información <em class="ni ni-arrow-right"></em></a></p>
-            </div><!-- .card -->
-        </div><!-- .col -->
-        <div class="col-md-4 col-xxl-3">
-            <div class="card card-bordered h-100">
-                <div class="card-inner">
-                    <div class="card-title-group">
-                        <div class="card-title card-title-sm">
-                            <h6 class="title">Identificación de necesidades y respuestas tecnologicas</h6>
-                        </div>
-                    </div>
-                    <div class="traffic-channel">
-                        <div class="traffic-channel-doughnut-ck">
-                            <canvas class="analytics-doughnutcomp2" id="TrafficChannelDoughnutDatacomp2"></canvas>
-                        </div>
-                        <div class="traffic-channel-group g-2">
-                            <div class="traffic-channel-data">
-                                <div class="title"><span class="dot dot-lg sq" data-bg="#84DB7B"></span><span></span></div>
-                                <!-- <div class="amount"><?php echo number_format($competencias->competencia_2); ?> <small><?php echo number_format(($competencias->competencia_2 * .25), 2, '.', ','); ?>%</small></div> -->
-                            </div>
-                            <div class="traffic-channel-data">
-                                <div class="title"><span class="dot dot-lg sq" data-bg="#D86B52"></span><span></span></div>
-                                <!-- <div class="amount"><?php echo number_format(100 - $competencias->competencia_2); ?> <small><?php echo number_format(25 - ($competencias->competencia_2 * .25), 2, '.', ','); ?>%</small></div> -->
-                            </div>
-                            <!-- <p>Nivel : <span class="badge badge-primary"><?php echo number_format($niveles->nivel_2, 2, '.', ','); ?></span></p> -->
-                        </div><!-- .traffic-channel-group -->
-                    </div><!-- .traffic-channel -->
-                </div>
-                <p class="text-right px-4"><a href="<?php echo base_url('competencias/details/2'); ?>">Más Información <em class="ni ni-arrow-right"></em></a></p>
-
-            </div><!-- .card -->
-        </div><!-- .col -->
-        <div class="col-md-4 col-xxl-3">
-            <div class="card card-bordered h-100">
-                <div class="card-inner">
-                    <div class="card-title-group">
-                        <div class="card-title card-title-sm">
-                            <h6 class="title">Uso creativo de la tecnología digital.</h6>
-                        </div>
-                    </div>
-                    <div class="traffic-channel">
-                        <div class="traffic-channel-doughnut-ck">
-                            <canvas class="analytics-doughnutcomp3" id="TrafficChannelDoughnutDatacomp3"></canvas>
-                        </div>
-                        <div class="traffic-channel-group g-2">
-                            <div class="traffic-channel-data">
-                                <div class="title"><span class="dot dot-lg sq" data-bg="#84DB7B"></span><span></span></div>
-                                <!-- <div class="amount"><?php echo number_format($competencias->competencia_3); ?> <small><?php echo number_format(($competencias->competencia_3 * .25), 2, '.', ','); ?>%</small></div> -->
-                            </div>
-                            <div class="traffic-channel-data">
-                                <div class="title"><span class="dot dot-lg sq" data-bg="#D86B52"></span><span></span></div>
-                                <!-- <div class="amount"><?php echo number_format(100 - $competencias->competencia_3); ?><small><?php echo number_format(25 - ($competencias->competencia_3 * .25), 2, '.', ','); ?>%</small></div> -->
-                            </div>
-                            <!-- <p>Nivel : <span class="badge badge-primary"><?php echo number_format($niveles->nivel_3, 2, '.', ','); ?></span></p> -->
-                        </div><!-- .traffic-channel-group -->
-                    </div><!-- .traffic-channel -->
-                </div>
-                <p class="text-right px-4"><a href="<?php echo base_url('competencias/details/3'); ?>">Más Información <em class="ni ni-arrow-right"></em></a></p>
-
-            </div><!-- .card -->
-        </div><!-- .col -->
-        <div class="col-md-4 col-xxl-3">
-            <div class="card card-bordered h-100">
-                <div class="card-inner">
-                    <div class="card-title-group">
-                        <div class="card-title card-title-sm">
-                            <h6 class="title">Lagunas en competencias digitales.</h6>
-                        </div>
-                    </div>
-                    <div class="traffic-channel">
-                        <div class="traffic-channel-doughnut-ck">
-                            <canvas class="analytics-doughnutcomp4" id="TrafficChannelDoughnutDatacomp4"></canvas>
-                        </div>
-                        <div class="traffic-channel-group g-2">
-                            <div class="traffic-channel-data">
-                                <div class="title"><span class="dot dot-lg sq" data-bg="#84DB7B"></span><span></span></div>
-                                <!-- <div class="amount"><?php echo number_format($competencias->competencia_4); ?><small><?php echo number_format(($competencias->competencia_4 * .25), 2, '.', ','); ?>%</small></div> -->
-                            </div>
-                            <div class="traffic-channel-data">
-                                <div class="title"><span class="dot dot-lg sq" data-bg="#D86B52"></span><span></span></div>
-                                <!-- <div class="amount"><?php echo number_format(100 - $competencias->competencia_4); ?> <small><?php echo number_format(25 - ($competencias->competencia_4 * .25), 2, '.', ','); ?>%</small></div> -->
-                            </div>
-                            <!-- <p>Nivel : <span class="badge badge-primary"><?php echo number_format($niveles->nivel_4, 2, '.', ','); ?></span></p> -->
-                        </div><!-- .traffic-channel-group -->
-                    </div><!-- .traffic-channel -->
-                </div>
-                <p class="text-right px-4"><a href="<?php echo base_url('competencias/details/4'); ?>">Más Información <em class="ni ni-arrow-right"></em></a></p>
-
-            </div><!-- .card -->
-        </div><!-- .col -->
     </div>
 </div>
 <p class="small">Nota: Los valores utilizados como maximos en cada nivel es 4, de acuerdo a el marco <strong>DIGCOMP V. 2.0</strong></p>

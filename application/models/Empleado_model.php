@@ -79,10 +79,7 @@ class Empleado_model extends CI_Model
         return $interesado->cantidad;
     }
 
-    public function getquestion($data){
-        $this->db->select($data);
-        return $this->db->get('competencias')->result();
-    }
+   
 
     // Esto va a obtener todos los usuarios que son empleados
     public function getall(){
@@ -99,38 +96,8 @@ class Empleado_model extends CI_Model
         return $this->db->get()->row();
     }
    
-    public function getquestionone($data,$id){
-      
-
-        $this->db->select($data);
-        $this->db->from('competencias');
-        $this->db->join('usuarios', 'competencias.employee_id = usuarios.id', 'left');
-        $this->db->where('usuarios.global_id', $id);
-       $competencia= $this->db->get()->result();
-       $value=0;
-        foreach($competencia as $c){
-            foreach($c as $a){
-                $value+=$a;
-            }
-        }
-        return ($value/5);
-    }
+   
     
-    public function getvalidationone($data,$id){
-        $this->db->select($data);
-        $this->db->from('competencias');
-        $this->db->join('usuarios', 'competencias.employee_id = usuarios.id', 'left');
-        $this->db->where('usuarios.global_id', $id);
-        $validacion=$this->db->get()->result();
-        $value=0;
-        foreach($validacion as $v){
-            foreach($v as $a){
-                $value+=$a;
-            }
-        }
-
-        return $value/2;
-    }
 
     public function getrespuestas($usuario_id,$competencia_id){
         $this->db->select('r.usuario_id,n.nombre,n.valor,p.codigo,p.competencia_id,p.pregunta');
@@ -141,6 +108,11 @@ class Empleado_model extends CI_Model
         $this->db->where('u.global_id', $usuario_id);
         $this->db->where('p.competencia_id', $competencia_id);
         return $this->db->get()->result();
+    }
+
+    public function get_empleado($global_id){
+        $this->db->where('global_id', $global_id);
+        return $this->db->get('usuarios')->row();
     }
                         
 }

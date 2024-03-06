@@ -7,11 +7,11 @@
 <div class="nk-footer">
     <div class="container-fluid">
         <div class="nk-footer-wrap">
-            <div class="nk-footer-copyright"> &copy; <?php echo date('Y');?> Competencias. Derechos Reservados
+            <div class="nk-footer-copyright"> &copy; <?php echo date('Y');?> Competencias Digitales. Derechos Reservados
             </div>
             <div class="nk-footer-links">
                 <ul class="nav nav-sm">
-                    <li class="nav-item"><a class="nav-link" href="#">Terminos y Condiciones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Términos y Condiciones</a></li>
                 </ul>
             </div>
         </div>

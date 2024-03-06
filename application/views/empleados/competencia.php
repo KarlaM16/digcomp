@@ -31,75 +31,28 @@
                                     <div class="nk-tb-col text-right"><span>Nivel</span></div>
                                     <div class="nk-tb-col"><span>% </span></div>
                                 </div><!-- .nk-tb-head -->
-                                <div class="nk-tb-item">
+                                <?php foreach ($competencias as $c) :?>
+                                    <div class="nk-tb-item">
                                     <div class="nk-tb-col">
                                         <div class="icon-text">
                                             <em class="text-primary icon ni ni-globe"></em>
-                                            <span class="tb-lead">Problemas Técnicos.</span>
+                                            <span class="tb-lead"><?php echo $c->competencia_nombre; ?></span>
                                         </div>
                                     </div>
                                     <div class="nk-tb-col text-right">
-                                        <span class="tb-sub tb-amount"><span><?php echo $competencias->nivel_1;?></span></span>
+                                        <span class="tb-sub tb-amount"><span><?php echo $c->total_nivel;?></span></span>
                                     </div>
                                     <div class="nk-tb-col">
                                         <div class="progress progress-md progress-alt bg-transparent">
-                                            <div class="progress-bar" data-progress="<?php echo (($competencias->nivel_1)/4)*100;?>" style="width: <?php echo (($competencias->nivel_1)/4)*100;?>%;"></div>
-                                            <div class="progress-amount"><?php echo (($competencias->nivel_1)/4)*100;?>%</div>
+                                            <div class="progress-bar" data-progress="<?php echo $c->total_ponderado;?>" style="width: <?php echo $c->total_ponderado;?>%;"></div>
+                                            <div class="progress-amount"><?php echo $c->total_ponderado;?>%</div>
                                         </div>
                                     </div>
                                     
                                 </div><!-- .nk-tb-item -->
-                                <div class="nk-tb-item">
-                                    <div class="nk-tb-col">
-                                        <div class="icon-text">
-                                            <em class="text-danger icon ni ni-globe"></em>
-                                            <span class="tb-lead">Identificación de Necesidades y Respuestas Tecnológicas.</span>
-                                        </div>
-                                    </div>
-                                    <div class="nk-tb-col text-right">
-                                        <span class="tb-sub tb-amount"><span><?php echo $competencias->nivel_2;?></span></span>
-                                    </div>
-                                    <div class="nk-tb-col">
-                                        <div class="progress progress-md progress-alt bg-transparent">
-                                        <div class="progress-bar" data-progress="<?php echo (($competencias->nivel_2)/4)*100;?>" style="width: <?php echo (($competencias->nivel_2)/4)*100;?> %;"></div>
-                                            <div class="progress-amount"><?php echo (($competencias->nivel_2)/4)*100;?>%</div>
-                                        </div>
-                                    </div>
-                                </div><!-- .nk-tb-item -->
-                                <div class="nk-tb-item">
-                                    <div class="nk-tb-col">
-                                        <div class="icon-text">
-                                            <em class="text-info icon ni ni-globe"></em>
-                                            <span class="tb-lead">Uso Creativo de Tecnología Digital.</span>
-                                        </div>
-                                    </div>
-                                    <div class="nk-tb-col text-right">
-                                        <span class="tb-sub tb-amount"><span><?php echo $competencias->nivel_3;?></span></span>
-                                    </div>
-                                    <div class="nk-tb-col">
-                                        <div class="progress progress-md progress-alt bg-transparent">
-                                        <div class="progress-bar" data-progress="<?php echo (($competencias->nivel_3)/4)*100;?>" style="width: <?php echo (($competencias->nivel_3)/4)*100;?>%;"></div>
-                                            <div class="progress-amount"><?php echo (($competencias->nivel_3)/4)*100;?>%</div>
-                                        </div>
-                                    </div>
-                                </div><!-- .nk-tb-item -->
-                                <div class="nk-tb-item">
-                                    <div class="nk-tb-col">
-                                        <div class="icon-text">
-                                            <em class="text-orange icon ni ni-globe"></em>
-                                            <span class="tb-lead">Lagunas en Competencias Digitales.</span>
-                                        </div>
-                                    </div>
-                                    <div class="nk-tb-col text-right">
-                                        <span class="tb-sub tb-amount"><span><?php echo $competencias->nivel_4;?></span></span>
-                                    </div>
-                                    <div class="nk-tb-col">
-                                        <div class="progress progress-md progress-alt bg-transparent">
-                                        <div class="progress-bar" data-progress="<?php echo (($competencias->nivel_4)/4)*100;?>" style="width: <?php echo (($competencias->nivel_4)/4)*100;?>%;"></div>
-                                            <div class="progress-amount"><?php echo (($competencias->nivel_4)/4)*100;?>%</div>
-                                        </div>
-                                    </div>
-                                </div><!-- .nk-tb-item -->
+                                <?php endforeach;?>
+                                
+                                
                             </div><!-- .nk-tb-list -->
                         </div><!-- .card -->
                     </div>
@@ -110,14 +63,14 @@
                     <div class="card-inner">
                         <div class="user-card">
                             <div class="user-avatar bg-primary">
-                                <span><?php echo $empleado->id; ?></span>
+                                <span><?php echo $empleado->empleado_id; ?></span>
                             </div>
                             <div class="user-info">
                                 <span class="lead-text"><small><?php echo $empleado->global_id; ?></small></span>
                                 <span class="sub-text"><?php echo ($empleado->email != null) ? $empleado->email : 'Sin Información'; ?></span>
-                            </div>
+                            </div> 
                             <div class="user-action">
-
+<!-- Leticia Moreno  -->
                             </div>
                         </div><!-- .user-card -->
                     </div><!-- .card-inner -->

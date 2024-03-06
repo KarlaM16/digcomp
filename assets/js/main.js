@@ -52,15 +52,15 @@ $('#edit-user').on('show.bs.modal', function (event) {
     $.ajax({
       'async': false,
       'method': "POST",
-      'url': base + "dashboard/getcomp_1",
+      'url': base + "dashboard/getarea",
       'global': false,
       'dataType': "json",
       'success': function(request) {
         
-        competencia_1 = (request['competencia_1']*.25).toFixed(2);
-        competencia_2 = (request['competencia_2']*.25).toFixed(2);
-        competencia_3 = (request['competencia_3']*.25).toFixed(2);
-        competencia_4 = (request['competencia_4']*.25).toFixed(2);
+         competencia_1 = (request[0]['ponderado']*.25).toFixed(2);
+         competencia_2 = (request[1]['ponderado']*.25).toFixed(2);
+         competencia_3 = (request[2]['ponderado']*.25).toFixed(2);
+         competencia_4 = (request[3]['ponderado']*.25).toFixed(2);
       }
     });
    

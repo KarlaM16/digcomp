@@ -33,11 +33,6 @@ class Dashboard extends CI_Controller
         
         $formacion = $this->formacion();
         
-       
-        // $porcentaje_competencias=$this->porcentaje_comp($competencia_1,$competencia_2,$competencia_3,$competencia_4);
-        
-        
-
         $data = array(
             'competencias'=>$competencias,
             'employees' => $employees,
@@ -46,7 +41,6 @@ class Dashboard extends CI_Controller
             'edades' => $this->getedad(),
             'formacion' => $formacion,
             'interesados' => $this->Empleado_model->countinteresados(),
-            // 'competencias'=>$porcentaje_competencias,
             'niveles'=>$niveles,
         );
         $this->load->view('layouts/header');
@@ -54,7 +48,20 @@ class Dashboard extends CI_Controller
         $this->load->view('layouts/footer');
     }
 
-    
+    public function getarea(){
+
+         $competencias=$this->Competencia_model->getall();
+         $niveles=array();
+         foreach($competencias as $c){
+           $nivel=(object)array('competencia'=>$c->id,'ponderado'=>0);
+             $resultado=$this->getresult_competencia($c->id);
+             $nivel->ponderado=$resultado->ponderado;
+           array_push($niveles,$nivel);
+         }
+         
+        
+       echo json_encode($niveles);
+    }
 
     public function formacion()
     {
@@ -119,58 +126,9 @@ class Dashboard extends CI_Controller
     }
 
    
-
     
 
-
-    function porcentaje_comp($comp_1,$comp_2,$comp_3,$comp_4){
-        $competencias=(object)array('competencia_1'=>0, 'competencia_2'=>0, 
-        'competencia_3'=>0,'competencia_4'=>0);
-        foreach ($comp_1 as $c1) {
-            $competencias->competencia_1+=$c1->total_ponderado;
-        }
-        foreach ($comp_2 as $c2) {
-            $competencias->competencia_2+=$c2->total_ponderado;
-        }
-        foreach ($comp_3 as $c3) {
-            $competencias->competencia_3+=$c3->total_ponderado;
-        }
-        foreach ($comp_4 as $c4) {
-            $competencias->competencia_4+=$c4->total_ponderado;
-        }
-
-        return $competencias;
-
-    }
-
     
-
-    function getpreguntas($competencia_id){
-        $preguntas=array();
-        switch ($competencia_id) {
-            case 1:
-                $question='id,pregunta_11,pregunta_12,pregunta_13,pregunta_14,pregunta_15,validacion_11,validacion_12';
-                $preguntas = $this->Empleado_model->getquestion($question);
-                break;
-            case 2:
-                $question='id,pregunta_21,pregunta_22,pregunta_23,pregunta_24,pregunta_25,validacion_21,validacion_22';
-                $preguntas = $this->Empleado_model->getquestion($question);
-                break;
-            case 3:
-                $question='id,pregunta_31,pregunta_32,pregunta_33,pregunta_34,pregunta_35,validacion_31,validacion_32';
-                $preguntas = $this->Empleado_model->getquestion($question);
-                break;
-            case 4:
-                $question='id,pregunta_41,pregunta_42,pregunta_43,pregunta_44,pregunta_45,validacion_41,validacion_42';
-                $preguntas = $this->Empleado_model->getquestion($question);
-                break;
-            
-          
-        }
-
-        return $preguntas;
-    }
-
     
     public function getresult_empleado($competencia_id){
         $usuarios=$this->Empleado_model->getall();

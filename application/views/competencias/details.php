@@ -28,42 +28,51 @@
                                 </thead>
                                 <tbody>
                                     <?php foreach ($preguntas as $p) : ?>
-                                        <?php $verify = str_split($p->codigo, 1) ?>
-                                        <?php if ($verify[0] == 'P') : ?>
-                                            <tr>
-                                                <td class=""><?php echo $p->codigo; ?></td>
-                                                <td  class=""><?php echo $p->descripcion;; ?></td>
-                                                <td  class="">
+                                        <tr>
+                                            <td class=""><?php echo $p->codigo; ?></td>
+                                            <td class=""><?php echo $p->pregunta; ?></td>
+                                            <td class="">
+                                                <?php $letter = str_split($p->codigo); ?>
+                                                <?php if ($letter[0] == 'P') : ?>
                                                     <ul>
-                                                        <?php if ($verify[2] == 1) : ?>
-                                                            <?php $count=1; foreach ($evaluacion[0] as $e) : ?>
-                                                                <li>N-<?php echo $count++;?><span class="badge badge-primary"><?php echo $e; ?></span></li>
-                                                            <?php endforeach; ?>
-                                                        <?php elseif ($verify[2] == 2) : ?>
-                                                            <?php $count_2=1; foreach ($evaluacion[1] as $e) : ?>
-                                                                <li>N-<?php echo $count_2++;?><span class="badge badge-primary"><?php echo $e; ?></span></li>
-                                                            <?php endforeach; ?>
-                                                        
-                                                        <?php elseif ($verify[2] == 3) : ?>
-                                                            <?php $count_3=1; foreach ($evaluacion[2] as $e) : ?>
-                                                                <li>N-<?php echo $count_3++;?><span class="badge badge-primary"><?php echo $e; ?></span></li>
-                                                            <?php endforeach; ?>
-                                                        
-                                                        <?php elseif ($verify[2] == 4) : ?>
-                                                            <?php $count_4=1; foreach ($evaluacion[3] as $e) : ?>
-                                                                <li>N-<?php echo $count_4++;?><span class="badge badge-primary"><?php echo $e; ?></span></li>
-                                                            <?php endforeach; ?>
-                                                        
-                                                        <?php elseif ($verify[2] == 5) : ?>
-                                                            <?php $count_5=1; foreach ($evaluacion[4] as $e) : ?>
-                                                                <li>N-<?php echo $count_5++;?><span class="badge badge-primary"><?php echo $e; ?></span></li>
-                                                            <?php endforeach; ?>
-                                                        <?php endif; ?>
-                                                    </ul>
-                                                </td>
-                                            </tr>
-                                        <?php endif; ?>
+                                                        <?php foreach ($niveles as $n) : ?>
+                                                            <?php if ($n->nombre != 'Validacion') : ?>
+                                                                <li>
+                                                                    <?php echo $n->valor; ?>
+                                                                    <?php $count = 0;
+                                                                    foreach ($respuestas as $r) : ?>
+                                                                        <?php if ($r->nivel_id == $n->id && $p->id == $r->pregunta_id) : ?>
+                                                                            <?php $count++; ?>
+                                                                        <?php endif; ?>
+                                                                    <?php endforeach;
+                                                                    echo '<span class="badge badge-primary">' . $count . '</span>'; ?>
 
+                                                                </li>
+                                                            <?php endif; ?>
+                                                        <?php endforeach; ?>
+                                                    </ul>
+                                                <?php else : ?>
+                                                    <ul>
+                                                        <?php foreach ($niveles as $n) : ?>
+                                                            <?php if ($n->nombre == 'Validacion') : ?>
+                                                                <li>
+                                                                    <?php echo $n->valor; ?>
+                                                                    <?php $count = 0;
+                                                                    foreach ($respuestas as $r) : ?>
+                                                                        <?php if ($r->nivel_id == $n->id && $p->id == $r->pregunta_id) : ?>
+                                                                            <?php $count++; ?>
+                                                                        <?php endif; ?>
+                                                                    <?php endforeach;
+                                                                    echo '<span class="badge badge-primary">' . $count . '</span>'; ?>
+
+                                                                </li>
+                                                            <?php endif; ?>
+                                                        <?php endforeach; ?>
+                                                    </ul>
+                                                <?php endif; ?>
+
+                                            </td>
+                                        </tr>
                                     <?php endforeach; ?>
 
                                 </tbody>
