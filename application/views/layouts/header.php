@@ -118,6 +118,7 @@
                                                 </div>
                                             </div>
                                         </a>
+                                        <!--informacion segun la cuenta del usuario en el que estemos-->
                                         <div class="dropdown-menu dropdown-menu-md dropdown-menu-right dropdown-menu-s1">
                                             <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
                                                 <div class="user-card">

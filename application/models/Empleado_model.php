@@ -114,6 +114,11 @@ class Empleado_model extends CI_Model
         $this->db->where('global_id', $global_id);
         return $this->db->get('usuarios')->row();
     }
+
+    public function get_empresa(){
+        return $this->db->get('empresas')->result();
+        
+    }
                         
 }
 

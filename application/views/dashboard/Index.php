@@ -102,6 +102,53 @@
         <div class="col-md-4 col-xxl-3">
             <div class="card card-bordered h-100">
                 <div class="card-inner">
+                    <div class="card-title-group align-start mb-3">
+                        <div class="card-title">
+                            <h6 class="title">Empresas</h6>
+                            <p>Empleados Entrevistados <em class="icon ni ni-info" data-toggle="tooltip" data-placement="right" title="" data-original-title="Referral Informations"></em></p>
+                        </div>
+
+                    </div>
+                    <?php foreach ($empresas as $e) : ?>
+                        <?php if ($e->nombre != 'N/A') : ?>
+                            <div class="user-activity-group g-4">
+
+                                <div class="user-activity">
+                                    <em class="icon ni ni-users"></em>
+                                    <div class="info">
+                                        <?php $count = 0;
+                                        foreach ($usuarios as $u) {
+                                            if ($u->empresa_id == $e->id) {
+                                                $count++;
+                                            }
+                                        } ?>
+                                        <span class="amount"><?php echo $count; ?></span>
+                                        <span class="title"><?php echo $e->nombre; ?></span>
+                                    </div>
+                                    <div class="gfx" data-color="#9cabff" style="color: rgb(156, 171, 255);">
+                                        <svg enable-background="new 0 0 48 17.5" version="1.1" viewBox="0 0 48 17.5" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill="currentColor" d="m1.2 17.4h-0.3c-0.5-0.1-0.8-0.7-0.7-1.2 2-7.2 5-12.2 8.8-14.7 1.5-1 3-1.5 4.5-1.4 4.9 0.3 7.2 4.9 9 8.5 0.3 0.4 0.5 0.8 0.7 1.2 1 1.8 2.7 3.9 4.5 4.3 0.9 0.2 1.7-0.1 2.6-0.8 1.8-1.4 3-3.7 4.1-5.9 0.5-1 1-1.9 1.5-2.9 1-1.5 2.8-3.5 4.9-3.8 1.1-0.1 2.2 0.3 3.1 1 1.3 1.1 1.9 2.6 2.4 4.1 0.4 1 0.7 1.9 1.2 2.6 0.3 0.4 0.2 1.1-0.2 1.4s-1.1 0.2-1.4-0.2c-0.7-0.9-1.1-2-1.5-3-0.5-1.3-1-2.5-1.9-3.3-0.5-0.4-1-0.6-1.5-0.5-1.3 0.2-2.7 1.6-3.5 2.8-0.5 0.8-1 1.8-1.4 2.7-1.2 2.4-2.4 4.9-4.6 6.5-1.3 1.1-2.8 1.5-4.2 1.2-3.1-0.6-5.1-3.9-5.9-5.3-0.2-0.4-0.4-0.8-0.6-1.3-1.7-3.4-3.5-7.2-7.3-7.4-1.1-0.1-2.1 0.3-3.3 1-3.5 2.4-6.2 7-8 13.7-0.2 0.4-0.6 0.7-1 0.7z"></path>
+                                        </svg>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </div>
+                <small class="text-justify px-3 mt-3">
+                    Los cálculos realizados en este dashboard
+                    son proporcionados por estas dos empresas,
+                    en la cual se identifican las posibles
+                    ventajas y desventajas en cada competencias de forma global tomando encuenta el conjunto de empresa.
+                </small>
+
+            </div><!-- .card -->
+        </div>
+        <div class="col-md-4 col-xxl-3">
+            <div class="card card-bordered h-100">
+                <div class="card-inner">
                     <div class="card-title-group">
                         <div class="card-title card-title-sm">
                             <h6 class="title">AREA 5</h6>

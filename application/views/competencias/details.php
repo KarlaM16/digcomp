@@ -5,7 +5,7 @@
                 <div class="nk-block-head nk-block-head-lg">
                     <div class="nk-block-between">
                         <div class="nk-block-head-content">
-                            <h4 class="nk-block-title">Competencia #<?php echo $numero; ?></h4>
+                            <h4 class="nk-block-title">Competencia #<?php echo $numero; ?></h4><!--el numero representa al id, controlador-->
                             <div class="nk-block-des">
                                 <p>Estadística de las preguntas de la competencia # <?php echo $numero; ?></p>
                             </div>
