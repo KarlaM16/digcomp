@@ -40,6 +40,7 @@ class Usuarios extends CI_Controller
       'email' => $this->input->post('email'),
       'rol' => $this->input->post('rol'),
       'password' => $pbcrypt,
+      'empresa_id'  => 3,
     );
 
     if ($this->User_model->add($data)) {
