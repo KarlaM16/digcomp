@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
+defined('BASEPATH')||exit('No direct script access allowed');
 
 class Area extends CI_Controller
 {
@@ -23,6 +23,4 @@ class Area extends CI_Controller
     $this->load->view('area/encuesta');
     $this->load->view('layouts/footer');
   }
-
-
 }
