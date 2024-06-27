@@ -1,6 +1,6 @@
-<?php defined('BASEPATH')|| exit('No direct script access allowed');
- 
- class Home extends CI_Controller {
+<?php
+defined('BASEPATH')|| exit('No direct script access allowed');
+    class Home extends CI_Controller {
  
     //constructor
     public function __construct()
@@ -18,7 +18,6 @@
         else{
             $this->load->view('home/index');
         }
-        
     }
     //funcion login
     public function login()
@@ -28,8 +27,7 @@
         }
         else{
             $this->load->view('home/login');
-        }
-       
+        } 
     }
 
     //funcion autenticarse
@@ -75,7 +73,4 @@
         $this->session->sess_destroy();//desruyte
         redirect(site_url('home/login'));
     }
- }
- 
- /* End of file Home.php */
- 
+    }
