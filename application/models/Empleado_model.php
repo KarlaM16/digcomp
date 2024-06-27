@@ -71,9 +71,6 @@ class Empleado_model extends CI_Model{
         $interesado= $this->db->get('usuarios')->row();
         return $interesado->cantidad;
     }
-
-   
-
     // Esto va a obtener todos los usuarios que son empleados
     public function getall(){
         
