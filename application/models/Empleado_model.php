@@ -87,7 +87,7 @@ class Empleado_model extends CI_Model{
         return $this->db->get('usuarios')->row();
     }
     public function get_empresa(){
-        return $this->db->get('empresas')->result();     
+        return $this->db->get('empresas')->result();
     }
 }
 
