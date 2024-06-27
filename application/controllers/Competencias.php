@@ -12,8 +12,7 @@ class Competencias extends CI_Controller
         $this->load->model('Competencia_model');
     }
 
-    public function index()
-    {
+    public function index(){
     }
 
     public function details($competencia_id)

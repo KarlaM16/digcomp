@@ -1,4 +1,4 @@
-<?php efined('BASEPATH')|| exit('No direct script access allowed');
+<?php defined('BASEPATH')|| exit('No direct script access allowed');
  
  class Home extends CI_Controller {
  
@@ -75,8 +75,6 @@
         $this->session->sess_destroy();//desruyte
         redirect(site_url('home/login'));
     }
-
- 
  }
  
  /* End of file Home.php */
