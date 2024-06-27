@@ -39,13 +39,12 @@ class Empleado_model extends CI_Model{
         
         $this->db->from('usuarios');
         $this->db->where('formacion', $formacion);
-        $data= $this->db->get()->row();
-       
+        $data= $this->db->get()->row(); 
         return  $data->cantidad;
     }
     public function edades(){
         $this->db->select('edad');
-        $this->db->where('rol', 'Empleado');   
+        $this->db->where('rol', 'Empleado');
         return $this->db->get('usuarios')->result();
     }
     public function getcantidadedad($edad){
@@ -89,10 +88,7 @@ class Empleado_model extends CI_Model{
         return $this->db->get('usuarios')->row();
     }
     public function get_empresa(){
-        return $this->db->get('empresas')->result();
-        
-    }                     
+        return $this->db->get('empresas')->result();     
+    }
 }
 
-
-/* End of file Empleado_model.php and path \application\models\Empleado_model.php */
