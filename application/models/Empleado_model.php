@@ -1,6 +1,4 @@
-<?php 
-defined('BASEPATH') OR exit('No direct script access allowed');
-                        
+<?php defined('BASEPATH')|| exit('No direct script access allowed');
 class Empleado_model extends CI_Model 
 {
     
@@ -73,7 +71,7 @@ class Empleado_model extends CI_Model
     }
     public function countinteresados(){
         $this->db->select('count(id) as cantidad');
-        $this->db->where('email is not null',null, FALSE);
+        $this->db->where('email is not null',null, false);
         $this->db->where('rol', 'Empleado');
         $interesado= $this->db->get('usuarios')->row();
         return $interesado->cantidad;
