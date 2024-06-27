@@ -45,7 +45,7 @@ defined('BASEPATH')|| exit('No direct script access allowed');
                 $this->session->set_userdata($user_data);
             redirect(site_url('dashboard/index'));
             }
-            else{    
+            else{
             $this->session->set_flashdata('error', 'No cuentas con permisos de administrador');
             
             redirect(site_url('home/login'));
