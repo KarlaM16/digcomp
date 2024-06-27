@@ -7,7 +7,6 @@ defined('BASEPATH')|| exit('No direct script access allowed');
     {
         parent::__construct();
         $this->load->model('User_model');
-        
     }
     //funcion principal. Presenta login, si usuario esta en userdata, pasa a la pagina dashboard/index, caso contrarios sigue en home
     public function index()
@@ -29,9 +28,7 @@ defined('BASEPATH')|| exit('No direct script access allowed');
             $this->load->view('home/login');
         } 
     }
-
     //funcion autenticarse
-
     public function auth()
     {
         $email=$this->input->post('email'); //metodo input y post html
@@ -43,19 +40,16 @@ defined('BASEPATH')|| exit('No direct script access allowed');
                 'email'=>$user_current->email,
                 'role'=>$user_current->rol,
                 'login'=>true,
-            );
-            
+            );  
             if($user_data['role']=='Administrador'){
                 $this->session->set_userdata($user_data);
             redirect(site_url('dashboard/index'));
             }
-            else{
-                
+            else{     
             $this->session->set_flashdata('error', 'No cuentas con permisos de administrador');
             
             redirect(site_url('home/login'));
             }
-
         }
         else{
            
@@ -63,13 +57,11 @@ defined('BASEPATH')|| exit('No direct script access allowed');
             
             redirect(site_url('home/login'));
         }
-
     }
 
     //funcion salir 
     public function logout()
-    {
-       
+    { 
         $this->session->sess_destroy();//desruyte
         redirect(site_url('home/login'));
     }
