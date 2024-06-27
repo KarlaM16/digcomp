@@ -5,13 +5,12 @@ class Empleado_model extends CI_Model{
         parent::__construct();
     }
     public function countusuarios(){
-        
         $this->db->select('count(e.id) as usuarios');
         $this->db->from('usuarios e');
         $this->db->where('e.rol', 'Empleado');
         $total= $this->db->get()->row();
         return $total->usuarios;
-    }   
+    }
     public function countfemale(){
         $this->db->select('count(f.id) as female');
         $this->db->from('usuarios f');
