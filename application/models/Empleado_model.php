@@ -1,11 +1,9 @@
 <?php defined('BASEPATH')|| exit('No direct script access allowed');
-class Empleado_model extends CI_Model {
+class Empleado_model extends CI_Model{
     
     
-    public function __construct()
-    {
+    public function __construct(){
         parent::__construct();
-        //Do your magic here
     }
     
     public function countusuarios(){
@@ -57,16 +55,13 @@ class Empleado_model extends CI_Model {
     public function edades(){
         $this->db->select('edad'); 
         $this->db->where('rol', 'Empleado');   
-        return $this->db->get('usuarios')->result();
-    }
+        return $this->db->get('usuarios')->result();}
     
     public function getcantidadedad($edad){
         $this->db->select('count(id) as cantidad');
         $this->db->where('edad', $edad);
         $total=$this->db->get('usuarios')->row();
-        
         return $total->cantidad;
-        
     }
     public function countinteresados(){
         $this->db->select('count(id) as cantidad');
