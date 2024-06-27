@@ -128,8 +128,7 @@ class Dashboard extends CI_Controller
         return $listedad;
     }
 
-    public function getresult_empleado($competencia_id)
-    {
+    public function getresult_empleado($competencia_id){
         $usuarios = $this->Empleado_model->getall();
         $resultados = array();
         foreach ($usuarios as $u) {

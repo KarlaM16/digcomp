@@ -1,7 +1,6 @@
-<?php defined('BASEPATH') || exit('No direct script access allowed');
+<?php defined('BASEPATH')|| exit('No direct script access allowed');
 
-class Competencias extends CI_Controller
-{
+class Competencias extends CI_Controller{
 
     public function __construct()
     {
@@ -17,7 +16,6 @@ class Competencias extends CI_Controller
 
     public function details($competencia_id)
     {
-
         $preguntas=$this->Competencia_model->getpreguntasall($competencia_id);
         $respuestas=$this->Competencia_model->getcountrespuesta($competencia_id);
         $niveles=$this->Competencia_model->getniveles();
