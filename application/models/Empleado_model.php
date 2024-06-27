@@ -55,7 +55,8 @@ class Empleado_model extends CI_Model{
     public function edades(){
         $this->db->select('edad'); 
         $this->db->where('rol', 'Empleado');   
-        return $this->db->get('usuarios')->result();}
+        return $this->db->get('usuarios')->result();
+    }
     
     public function getcantidadedad($edad){
         $this->db->select('count(id) as cantidad');
@@ -87,10 +88,6 @@ class Empleado_model extends CI_Model{
         $this->db->where('global_id', $global_id);
         return $this->db->get()->row();
     }
-   
-   
-    
-
     public function getrespuestas($usuario_id,$competencia_id){
         $this->db->select('r.usuario_id,n.nombre,n.valor,p.codigo,p.competencia_id,p.pregunta');
         $this->db->from('respuestas r');
@@ -101,12 +98,10 @@ class Empleado_model extends CI_Model{
         $this->db->where('p.competencia_id', $competencia_id);
         return $this->db->get()->result();
     }
-
     public function get_empleado($global_id){
         $this->db->where('global_id', $global_id);
         return $this->db->get('usuarios')->row();
     }
-
     public function get_empresa(){
         return $this->db->get('empresas')->result();
         
