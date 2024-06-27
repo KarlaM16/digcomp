@@ -38,7 +38,7 @@ class Empleado_model extends CI_Model{
         
         $this->db->from('usuarios');
         $this->db->where('formacion', $formacion);
-        $data= $this->db->get()->row(); 
+        $data= $this->db->get()->row();
         return  $data->cantidad;
     }
     public function edades(){
