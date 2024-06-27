@@ -26,7 +26,7 @@ defined('BASEPATH')|| exit('No direct script access allowed');
         }
         else{
             $this->load->view('home/login');
-        } 
+        }
     }
     //funcion autenticarse
     public function auth()
@@ -40,12 +40,12 @@ defined('BASEPATH')|| exit('No direct script access allowed');
                 'email'=>$user_current->email,
                 'role'=>$user_current->rol,
                 'login'=>true,
-            );  
+            );
             if($user_data['role']=='Administrador'){
                 $this->session->set_userdata($user_data);
             redirect(site_url('dashboard/index'));
             }
-            else{     
+            else{    
             $this->session->set_flashdata('error', 'No cuentas con permisos de administrador');
             
             redirect(site_url('home/login'));
