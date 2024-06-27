@@ -1,11 +1,9 @@
 <?php defined('BASEPATH')|| exit('No direct script access allowed');
 class Empleado_model extends CI_Model{
     
-    
     public function __construct(){
         parent::__construct();
     }
-    
     public function countusuarios(){
         
         $this->db->select('count(e.id) as usuarios');
@@ -13,10 +11,7 @@ class Empleado_model extends CI_Model{
         $this->db->where('e.rol', 'Empleado');
         $total= $this->db->get()->row();
         return $total->usuarios;
-    }
-
-    
-
+    }   
     public function countfemale(){
         $this->db->select('count(f.id) as female');
         $this->db->from('usuarios f');
@@ -25,7 +20,6 @@ class Empleado_model extends CI_Model{
         $total=$this->db->get()->row();
         return $total->female;
     }
-
     public function countmale(){
         $this->db->select('count(m.id) as male');
         $this->db->from('usuarios m');
@@ -34,14 +28,12 @@ class Empleado_model extends CI_Model{
         $total=$this->db->get()->row();
         return $total->male;
     }
-
     public function formacion(){
         $this->db->select('formacion');
         $this->db->order_by('formacion', 'asc');
         $this->db->where('rol', 'Empleado');
         return $this->db->get('usuarios')->result();
     }
-
     public function getcountformacion($formacion){
         $this->db->select('count(id) as cantidad');
         
@@ -51,13 +43,11 @@ class Empleado_model extends CI_Model{
        
         return  $data->cantidad;
     }
-
     public function edades(){
-        $this->db->select('edad'); 
+        $this->db->select('edad');
         $this->db->where('rol', 'Empleado');   
         return $this->db->get('usuarios')->result();
     }
-    
     public function getcantidadedad($edad){
         $this->db->select('count(id) as cantidad');
         $this->db->where('edad', $edad);
@@ -78,7 +68,6 @@ class Empleado_model extends CI_Model{
         $this->db->where('rol', 'Empleado');
         return $this->db->get('usuarios')->result();
     }
-
     public function getone($global_id){
         $this->db->select('e.id empleado_id,e.global_id,e.email,e.genero,e.edad,e.creation_time,e.formacion,');
         $this->db->from('usuarios e');
@@ -102,8 +91,7 @@ class Empleado_model extends CI_Model{
     public function get_empresa(){
         return $this->db->get('empresas')->result();
         
-    }
-                        
+    }                     
 }
 
 
