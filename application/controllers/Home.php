@@ -58,10 +58,9 @@ defined('BASEPATH')|| exit('No direct script access allowed');
             redirect(site_url('home/login'));
         }
     }
-
-    //funcion salir 
+    //funcion salir
     public function logout()
-    { 
+    {
         $this->session->sess_destroy();//desruyte
         redirect(site_url('home/login'));
     }
