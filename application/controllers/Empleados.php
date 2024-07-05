@@ -113,6 +113,44 @@ class Empleados extends CI_Controller
         
         return $resultados;
     }
+
+    public function descargapreguntas($id){
+        $this->load->library('PdfGenerator');
+        $niveles = $this->Competencia_model->getniveles();
+        $respuestas = $this->Empleado_model->getrespuestas($id, 1);
+        $respuestas_2 = $this->Empleado_model->getrespuestas($id, 2);
+        $respuestas_3 = $this->Empleado_model->getrespuestas($id, 3);
+        $respuestas_4 = $this->Empleado_model->getrespuestas($id, 4);
+        $data = array(
+            'empleado' => $this->Empleado_model->getone($id),
+            'niveles' => $niveles,
+            'respuestas' => $respuestas,
+            'respuestas_2' => $respuestas_2,
+            'respuestas_3' => $respuestas_3,
+            'respuestas_4' => $respuestas_4,
+        );
+
+
+       // $this->load->view('empleados/descarga', $data);
+        $html=$this->load->view('empleados/descarga', $data, TRUE);
+        $file="Preguntas del Empleado".$id;
+        $this->pdfgenerator->generate($html, $file,true,'A4', 'portrait');
+    }
+    public function descarcompetencias($global_id){
+        $this->load->library('PdfGenerator');
+
+        $respuestas = $this->datacompetencia($global_id);
+      
+        $data = array(
+            'empleado' => $this->Empleado_model->getone($global_id),
+            'competencias'=>$respuestas,
+        );
+ 
+        $html=$this->load->view('empleados/descargacompetencia', $data, TRUE);
+        //$this->load->view('empleados/descargacompetencia', $data);
+        $file="Competencias del Empleado".$global_id;
+       $this->pdfgenerator->generate($html, $file,true,'A4', 'portrait');
+    }
 }
 
 /* End of file Empleados.php and path \application\controllers\Empleados.php */

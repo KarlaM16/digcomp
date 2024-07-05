@@ -227,6 +227,12 @@
                             <li><a class="active" href="<?php echo base_url('empleados/preguntas/' . $empleado->global_id); ?>"><em class="icon ni ni-activity-round-fill"></em><span>Preguntas</span></a></li>
                         </ul>
                     </div><!-- .card-inner -->
+
+                    <div class="nk-tb-item">
+                        <div class="nk-tb-col nk-tb-channel px-1 py-1">
+                            <a href="<?php echo base_url('empleados/descargapreguntas/'.$empleado->global_id);?>" class="btn btn-sm btn-primary">Exportar en PDF</a>                   
+                        </div>
+                    </div><!-- .nk-tb-item -->
                 </div><!-- .card-inner-group -->
             </div><!-- card-aside -->
         </div><!-- .card-aside-wrap -->

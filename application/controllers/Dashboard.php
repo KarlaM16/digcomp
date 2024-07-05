@@ -185,6 +185,15 @@ class Dashboard extends CI_Controller
 
         return $competencia;
     }
+
+    function areadescarga(){    
+        $this->load->library('PdfGenerator');
+        $data=null;
+        $html=$this->load->view('dashboard/areadescarga', $data, TRUE);
+        $file="Detalles del área";
+        $this->pdfgenerator->generate($html, $file,true,'A4', 'portrait');
+    }
+
 }
 
 /* End of file Dashboard.php and path \application\controllers\Dashboard.php */

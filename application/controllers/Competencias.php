@@ -31,6 +31,23 @@ class Competencias extends CI_Controller{
         $this->load->view('layouts/footer');
     }
 
+    public function detailsdescarga($competencia_id){
+        $this->load->library('PdfGenerator');
+        $preguntas=$this->Competencia_model->getpreguntasall($competencia_id);
+        $respuestas=$this->Competencia_model->getcountrespuesta($competencia_id);
+        $niveles=$this->Competencia_model->getniveles();
+        
+        $data = array(
+            'numero' => $competencia_id,
+            'preguntas'=>$preguntas,
+            'niveles'=>$niveles,
+            'respuestas'=>$respuestas,
+        );
+        $html=$this->load->view('competencias/descarga', $data, TRUE);
+        //$html=$this->load->view('competencias/descarga', $data);
+        $file="Evaluación de la competencia #".$competencia_id;
+        $this->pdfgenerator->generate($html, $file,true,'A4', 'portrait');
+    }
     
 }
 

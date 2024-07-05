@@ -1,7 +1,7 @@
-<div class="nk-block">
+<div class="nk-block ">
     <div class="card card-bordered">
-        <div class="card-aside-wrap">
-            <div class="card-inner card-inner-lg">
+        <div class="row justify-content-center">
+            <div class="card-inner card-inner-lg ">
                 <div class="nk-block-head nk-block-head-lg">
                     <div class="nk-block-between">
                         <div class="nk-block-head-content">
@@ -91,6 +91,11 @@
                         </div>
                     </div>
                 </div><!-- .nk-block -->
+                <div class="nk-tb-item">
+                        <div class="nk-tb-col nk-tb-channel px-1 py-1">
+                            <a href="<?php echo base_url('competencias/detailsdescarga/'.$numero) ?>" class="btn btn-sm btn-primary">Exportar en PDF</a>                   
+                        </div>
+                </div><!-- .nk-tb-item -->
             </div>
 
         </div><!-- .card-aside-wrap -->
