@@ -13,14 +13,12 @@
     <div class="nk-block-head nk-block-head">
         <div class="nk-block-head-content">
             <h4 class="nk-block-title">Lista de Empleados Encuestados</h4>
-            <div class="nk-block-des d-flex justify-content-end px-3">
-                <button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalDefault">Agregar Usuario</button>
-            </div>
+           
         </div>
     </div>
     <div class="card card-preview">
         <div class="card-inner">
-            <table class="table table-sm small datatable-init">
+            <table class="table table-sm small" id="empleados-data">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>

@@ -141,7 +141,7 @@
                     Los cálculos realizados en este dashboard
                     son proporcionados por estas dos empresas,
                     en la cual se identifican las posibles
-                    ventajas y desventajas en cada competencias de forma global tomando encuenta el conjunto de empresa.
+                    ventajas y desventajas en cada competencias de forma global.
                 </small>
 
             </div><!-- .card -->
@@ -253,5 +253,5 @@
 
     </div>
 </div>
-<p class="small">Nota: Los valores utilizados como maximos en cada nivel es 4, de acuerdo a el marco <strong>DIGCOMP V. 2.0</strong></p>
+<p class="small">Nota: Los valores utilizados como maximos en cada nivel es 4, de acuerdo a el marco <strong>DIGCOMP V. 2.1</strong></p>
 <input type="hidden" id="base" value="<?php echo base_url(); ?>">

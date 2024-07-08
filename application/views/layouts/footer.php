@@ -9,11 +9,6 @@
         <div class="nk-footer-wrap">
             <div class="nk-footer-copyright"> &copy; <?php echo date('Y');?> Competencias Digitales. Derechos Reservados
             </div>
-            <div class="nk-footer-links">
-                <ul class="nav nav-sm">
-                    <li class="nav-item"><a class="nav-link" href="#">Términos y Condiciones</a></li>
-                </ul>
-            </div>
         </div>
     </div>
 </div>
@@ -29,6 +24,16 @@
 <script src="<?php echo base_url('assets/js/scripts.js?ver=2.4.0'); ?>"></script>
 <script src="<?php echo base_url('assets/js/charts/gd-default.js?ver=2.4.0'); ?>"></script>
 <script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/dataTables.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/dataTables.buttons.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/buttons.dataTables.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/dataTables.bootstrap4.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/jszip.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/pdfmake.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/vfs_fonts.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/buttons.html5.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/buttons.print.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/js.js'); ?>"></script>
 </body>
 
 </html>

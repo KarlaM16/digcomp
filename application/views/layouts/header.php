@@ -14,6 +14,9 @@
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="<?php echo base_url('assets/css/dashlite.css?ver=2.4.0');?>">
     <link id="skin-default" rel="stylesheet" href="<?php echo base_url('assets/css/theme.css?ver=2.4.0');?>">
+    <link id="skin-default" rel="stylesheet" href="<?php echo base_url('assets/css/dataTables.bootstrap4.css');?>">
+    <link id="skin-default" rel="stylesheet" href="<?php echo base_url('assets/css/dataTables.dataTables.css');?>">
+    <link id="skin-default" rel="stylesheet" href="<?php echo base_url('assets/css/buttons.dataTables.css');?>">
 </head>
 
 <body class="nk-body bg-lighter npc-general has-sidebar ">
@@ -49,14 +52,10 @@
                                     <h6 class="overline-title text-primary-alt">Información</h6>
                                 </li><!-- .nk-menu-heading -->
                                 <li class="nk-menu-item">
-                                    <a href="<?php echo site_url('area/index');?>" class="nk-menu-link">
+                                    <!-- .nk-menu-heading <a href="<?php echo site_url('area/index');?>" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
                                         <span class="nk-menu-text">Área 5</span>
-                                    </a>
-                                    <a href="<?php echo site_url('area/encuesta');?>" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
-                                        <span class="nk-menu-text">Encuesta</span>
-                                    </a>
+                                    </a>-->
                                     <a href="<?php echo site_url('empleados/index');?>" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
                                         <span class="nk-menu-text">Resultados de Empleados</span>
@@ -98,7 +97,6 @@
                             <div class="nk-header-brand d-xl-none">
                                 <a href="html/index.html" class="logo-link">
                                     <img class="logo-light logo-img" src="./images/logo.png" srcset="./images/logo2x.png 2x" alt="logo">
-                                    <img class="logo-dark logo-img" src="./images/logo-dark.png" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
                                 </a>
                             </div><!-- .nk-header-brand -->
                             <div class="nk-header-news d-none d-xl-block">

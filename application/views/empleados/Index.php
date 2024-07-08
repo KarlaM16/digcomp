@@ -8,7 +8,7 @@
     <div class="card card-preview">
         <div class="card-inner">
             <div class="table-responsive">
-                <table class="datatable-init table table-sm table-bordered small first" id="example">
+                <table class="table table-sm table-bordered small first" id="empleados-data">
                     <thead class="thead-dark">
                         <tr>
                             <th>#</th>

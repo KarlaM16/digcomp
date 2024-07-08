@@ -796,7 +796,7 @@
     NioApp.Select2.init();
     NioApp.Dropzone.init();
     NioApp.Slider.init();
-    NioApp.DataTable.init();
+    //NioApp.DataTable.init();
   }; // Toggler @v1
 
 

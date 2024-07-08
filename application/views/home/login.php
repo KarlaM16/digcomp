@@ -57,7 +57,7 @@
                                     <div class="form-group">
                                         <div class="form-label-group">
                                             <label class="form-label" for="password">Contraseña</label>
-                                            <a class="link link-primary link-sm" href="html/pages/auths/auth-reset-v2.html">Olvido su contraseña?</a>
+                                           
                                         </div>
                                         <div class="form-control-wrap">
                                             <a href="#" class="form-icon form-icon-right passcode-switch" data-target="password">
@@ -71,7 +71,7 @@
                                         <button type="submit" class="btn btn-lg btn-primary btn-block">Iniciar Sesión</button>
                                     </div>
                                 </form>
-                                <div class="form-note-s2 text-center pt-4"> Nuevo Usuario? <a href="html/pages/auths/auth-register-v2.html">Crear una cuenta</a>
+                               
                                 </div>
 
                             </div>
@@ -81,11 +81,7 @@
                         <div class="container wide-lg">
                             <div class="row g-3">
                                 <div class="col-lg-6 order-lg-last">
-                                    <ul class="nav nav-sm justify-content-center justify-content-lg-end">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Términos y condiciones</a>
-                                        </li>
-                                    </ul>
+                                   
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="nk-block-content text-center text-lg-left">

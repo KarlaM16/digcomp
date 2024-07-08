@@ -1,0 +1,21 @@
+<!-- phpunit.xml -->
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.5/phpunit.xsd"
+         backupGlobals="false"
+         colors="true"
+         bootstrap="tests/bootstrap.php">
+    <php>
+        <!-- Variables de entorno para la configuración de CodeIgniter -->
+        <env name="ENVIRONMENT" value="testing"/>
+        <env name="DB1_HOST" value="localhost"/>
+        <env name="DB1_USER" value="root"/>
+        <env name="DB1_PASS" value=""/>
+        <env name="DB1_NAME" value="tu_basede_datos_de_pruebas"/> <!-- Nombre de tu base de datos de pruebas -->
+    </php>
+    <testsuites>
+        <testsuite name="Application Test Suite">
+            <directory>tests/units</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
