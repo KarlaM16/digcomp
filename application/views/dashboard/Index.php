@@ -188,9 +188,9 @@
                                                                             }
                                                                             echo number_format($nivel / 4, 2, '.', ','); ?></span></p>
 
-                            <div class="nk-tb-col nk-tb-channel px-1 py-1">
+                            <!-- <div class="nk-tb-col nk-tb-channel px-1 py-1">
                                 <a href="<?php echo base_url('dashboard/areadescarga/') ?>" class="btn btn-sm btn-primary">Exportar en PDF</a>                   
-                            </div>                                                    
+                            </div>  -->                                            
 
                         </div><!-- .traffic-channel-group -->
                     </div><!-- .traffic-channel -->

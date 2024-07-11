@@ -85,7 +85,7 @@
       <div class="column">
         <table class="table">
           <tr>
-            <td class="text-center"><h5 class="h5 align-center">Reporte de Actividades</h5></td>
+            <td class="text-center"><h3 class="h5 align-center">Reporte de Actividades</h3></td>
           </tr>
         </table>
       </div>
@@ -97,7 +97,7 @@
                 <div class="nk-block-head nk-block-head-lg">
                     <div class="nk-block-between">
                         <div class="nk-block-head-content">
-                            <h4 class="text-center">Competencia #<?php echo $numero; ?></h4><!--el numero representa al id, controlador-->
+                            <h2 class="text-center">Competencia #<?php echo $numero; ?></h2><!--el numero representa al id, controlador-->
                             <div class="text-center">
                                 <p>Estadística de las preguntas de la competencia # <?php echo $numero; ?></p>
                             </div>

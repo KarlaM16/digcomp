@@ -49,22 +49,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @param 	bool		$query_builder_override
  *				Determines if query builder should be used or not
  */
-function &DB($params = '', $query_builder_override = NULL)
+function &DB($params = '', $query_builder_override = NULL) // se encarga de inicializar la conexión a la base de datos.
 {
-	// Load the DB config file if a DSN string wasn't passed
-	if (is_string($params) && strpos($params, '://') === FALSE)
+	// Carga el archivo de configuración de la base de datos si no se ha pasado una cadena DSN
+	if (is_string($params) && strpos($params, '://') === FALSE)//Si $params no es una cadena DSN, se carga el archivo de configuración database.php.
 	{
-		// Is the config file in the environment folder?
-		if ( ! file_exists($file_path = APPPATH.'config/'.ENVIRONMENT.'/database.php')
-			&& ! file_exists($file_path = APPPATH.'config/database.php'))
+		// Verifica si el archivo de configuración está en la carpeta de entorno
+		if ( ! file_exists($file_path = APPPATH.'config/'.ENVIRONMENT.'/database.php') //Si el archivo database existe en el subdirectorio del entorno .
+			&& ! file_exists($file_path = APPPATH.'config/database.php'))//Busca si el archivo existe en directorio general de configuracion
 		{
-			show_error('The configuration file database.php does not exist.');
+			//Si ninguna de las dos rutas de archivo existe, se ejecuta la función show_error,
+			//que indica que el archivo de configuración database.php no existe.
+			show_error('The configuration file database.php does not exist.'); 
 		}
 
 		include($file_path);
 
-		// Make packages contain database config files,
-		// given that the controller instance already exists
+		// Incluye los archivos de configuración de la base de datos de paquetes
+		// que el controlador instanciado exista
 		if (class_exists('CI_Controller', FALSE))
 		{
 			foreach (get_instance()->load->get_package_paths() as $path)
@@ -82,6 +84,9 @@ function &DB($params = '', $query_builder_override = NULL)
 				}
 			}
 		}
+
+		//Esta seccion valida la configuración de la base de datos 
+		//y establece los parámetros necesarios para la conexión.
 
 		if ( ! isset($db) OR count($db) === 0)
 		{

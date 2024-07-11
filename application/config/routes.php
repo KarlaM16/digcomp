@@ -49,6 +49,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'home';
-$route['404_override'] = '';
-$route['translate_uri_dashes'] = FALSE;
+$route['default_controller'] = 'home'; //Controlador por defecto de la aplicación, cargando home automaticamente
+$route['404_override'] = ''; //controlador/método que se debe cargar si la URL solicitada no coincide con ninguna ruta definida 
+$route['translate_uri_dashes'] = FALSE; //Los guiones - en las URL no serán traducidos a _

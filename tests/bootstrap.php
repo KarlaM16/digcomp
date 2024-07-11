@@ -1,14 +1,11 @@
-// bootstrap.php
 <?php
-// bootstrap.php
-define('ENVIRONMENT', 'testing'); // Define el entorno de pruebas
+// tests/bootstrap.php
 
-// Define las rutas a CodeIgniter
-define('APPPATH', realpath('C:/xampp/htdocs/digcomp/application') . '/');
-define('BASEPATH', realpath('C:/xampp/htdocs/digcomp/system') . '/');
-define('VIEWPATH', APPPATH . 'views/');
+// Definir constantes si es necesario
+define('BASEPATH', true);
+define('APPPATH', realpath(__DIR__ . '/../application'));
 
-// Carga de CodeIgniter
-require_once BASEPATH . 'core/CodeIgniter.php';
+// Cargar componentes necesarios de CodeIgniter
+require_once APPPATH . '/models/User_model.php'; // Ejemplo de carga de un modelo
 
-?>
+// Configurar cualquier inicialización adicional necesaria para las pruebas

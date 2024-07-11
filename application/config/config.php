@@ -23,7 +23,7 @@ defined('BASEPATH')||exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/digcomp/';
+$config['base_url'] = 'http://localhost/digcomp/'; //formato de la url, la aplicacion esta ubicado en esta direccion
 
 /*
 |--------------------------------------------------------------------------
